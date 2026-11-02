@@ -25,6 +25,16 @@
       "path": "native/assets/campaign.json",
       "bytes": 30376,
       "sha256": "3a1a8a116c5e6f660133504335ffb091c6dc7bd764ead2e17d04bb88b886d747"
+    },
+    {
+      "path": "native/assets/enhanced/woodland.svg",
+      "bytes": 7702,
+      "sha256": "fceb279e372303faa2ec335b50dc7a9fbdab8e1008e87828eb1caee7f83a2167"
+    },
+    {
+      "path": "native/assets/enhanced/woodland-march.mp3",
+      "bytes": 401325,
+      "sha256": "c7519a450d87570a7614b98c3945706b87337c184d07e3d8ba2607829646b046"
     }
   ]
 }

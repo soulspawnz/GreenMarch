@@ -1,6 +1,8 @@
 import {Game,SKILLS,TICKS_PER_SECOND} from './engine.mjs';
 import {Renderer} from './render.mjs';
 import {Audio} from './audio.mjs';
+import {EnhancedRenderer} from './enhanced-render.mjs';
+import {EnhancedAudio} from './enhanced-audio.mjs';
 import {loadCatalogue,loadNativeLevel} from './campaign.mjs';
 import {ID,blank,verify} from './learning-policy.mjs';
 
@@ -8,6 +10,32 @@ const $=id=>document.getElementById(id),canvas=$('game'),held=new Set();
 let catalogue,entries=[],entry,game,renderer,audio,level,terrain,selected=7,running=false,loading=false,hasStarted=false;
 let speed=1,cursor=null,last=0,accumulator=0,replay=null,replayAt=0,loadGeneration=0,nukeUntil=0,muted=false,volume=.35;
 let db,model=blank(),records=[],archivedRecords=[],archivedModels=[],training=null;
+let presentation='classic',actorFrames,sidBytes,switching=false,starting=false;
+try{if(localStorage.getItem('greenmarch-presentation')==='enhanced')presentation='enhanced'}catch{}
+function modeLabel(){
+ $('presentation').value=presentation;document.body.dataset.presentation=presentation;
+ $('presentation-copy').textContent=presentation==='enhanced'?'Woodland scenery · new soundtrack & effects':'Original pixels · original SID music';
+ $('audio-edition').textContent=presentation==='enhanced'?'STUDIO':'SID 6581';
+ canvas.setAttribute('aria-label',presentation==='enhanced'?'Enhanced terrain and lemmings':'Original C64 terrain and lemmings');
+ document.querySelector('.curtain-note').textContent=presentation==='enhanced'?'Woodland edition · new artwork, music & effects':'Original C64 graphics & SID music';
+ document.querySelector('.intro-note').textContent=presentation==='enhanced'?'A fresh look. A new soundtrack.':'Original graphics. Original SID.';
+ document.querySelector('.edition').textContent=presentation==='enhanced'?'WOODLAND / ENHANCED EDITION':'C64 PIXELS / NATIVE BROWSER ENGINE';
+}
+function makeRenderer(){return new (presentation==='enhanced'?EnhancedRenderer:Renderer)(canvas,level,actorFrames)}
+function makeAudio(){return presentation==='enhanced'?new EnhancedAudio():new Audio(sidBytes)}
+async function switchPresentation(value){
+ if(switching||starting||loading||training||!game||!['classic','enhanced'].includes(value)||value===presentation)return;
+ switching=true;const resume=running,camera=renderer.camera,old=presentation;pause();$('presentation').disabled=true;
+ try{
+  await audio.close();presentation=value;renderer=makeRenderer();renderer.camera=camera;game.changed=true;audio=makeAudio();audio.muted=muted;audio.volume=volume;
+  if(resume){await audio.start();running=true;last=performance.now();accumulator=0}
+  try{localStorage.setItem('greenmarch-presentation',presentation)}catch{}
+  notice((presentation==='enhanced'?'Enhanced':'Classic')+' presentation. Your game is preserved.');
+ }catch(error){
+  await audio?.close();presentation=old;renderer=makeRenderer();renderer.camera=camera;game.changed=true;audio=makeAudio();audio.muted=muted;audio.volume=volume;notice('Unable to change presentation: '+error.message);
+ }finally{switching=false;$('presentation').disabled=false;modeLabel();configure();renderer.draw(game,cursor,selected)}
+}
+$('presentation').onchange=event=>void switchPresentation(event.target.value);
 const progressKey='greenmarch-native-campaign-1';let completed=new Set();
 try{completed=new Set(JSON.parse(localStorage.getItem(progressKey)||'[]'))}catch{}
 const request=r=>new Promise((resolve,reject)=>{r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});
@@ -18,15 +46,19 @@ function configure(){
  if(audio){audio.paused=!running;audio.configure()}
  $('pause').textContent=running?'Pause  P':'Resume  P';
  $('status').textContent=loading?'LOADING':!game?'LOADING':game.status==='playing'?(running?'PLAYING':hasStarted?'PAUSED':'READY'):game.status.toUpperCase();
- for(const id of ['play','pause','restart','speed','release-up','release-down','nuke'])$(id).disabled=!game||loading||!!training;
- $('load-level').disabled=loading||!!training||!catalogue;
- $('next-level').disabled=loading||!!training||!nextEntry();
+ for(const id of ['play','pause','restart','speed','release-up','release-down','nuke'])$(id).disabled=!game||loading||!!training||switching||starting;
+ $('presentation').disabled=!game||loading||!!training||switching||starting;
+ $('load-level').disabled=loading||!!training||!catalogue||switching||starting;
+ $('next-level').disabled=loading||!!training||!nextEntry()||switching||starting;
 }
 function pause(){running=false;held.clear();configure()}
 async function play(){
- if(!game||training||loading)return;
- await audio.start();if(game.status!=='playing'){game.restart();audio.reset();replay=null}
- hasStarted=true;running=true;$('curtain').style.display='none';configure();last=performance.now();accumulator=0;
+ if(!game||training||loading||switching||starting)return;
+ starting=true;configure();
+ try{
+  await audio.start();if(game.status!=='playing'){game.restart();audio.reset();replay=null}
+  hasStarted=true;running=true;$('curtain').style.display='none';last=performance.now();accumulator=0;
+ }finally{starting=false;configure()}
 }
 function overlay(){
  $('overlay-kicker').textContent=entry.rating.toUpperCase()+' · LEVEL '+String(entry.number).padStart(2,'0');
@@ -41,7 +73,7 @@ function selectSkill(skill){
 }
 function assign(){
  if(!running||replay||!cursor)return;const actor=game.pick(cursor.x,cursor.y,selected);
- if(actor&&game.assign(actor.id,selected))notice(SKILLS[selected]+' assigned. '+game.skills[selected]+' remaining.');
+ if(actor&&game.assign(actor.id,selected)){audio.effect('assign');notice(SKILLS[selected]+' assigned. '+game.skills[selected]+' remaining.');}
  else notice('Choose a suitable lemming for '+SKILLS[selected]+'.');hud();
 }
 function hud(){
@@ -81,7 +113,7 @@ function animate(now){
    }
    const actions=[];
    if(replay)while(replayAt<replay.inputs.length&&replay.inputs[replayAt].tick===game.tick)actions.push(replay.inputs[replayAt++]);
-   game.step(actions);for(const event of game.events)if(['rescue','death'].includes(event))audio.effect(event);
+   game.step(actions);for(const event of game.events)if(presentation==='enhanced'||['rescue','death'].includes(event))audio.effect(event);
    if(game.status!=='playing')result();
   }
   if(cursor){if(cursor.x<renderer.camera+3)renderer.scroll(-1);else if(cursor.x>renderer.camera+renderer.width-3)renderer.scroll(1)}
@@ -107,12 +139,14 @@ function mission(){
  $('mission-copy').textContent='Available: '+available.join(', ')+'.';
 }
 async function loadLevel(id){
- const chosen=entries.find(item=>item.id===id);if(!chosen||training)return;
+ const chosen=entries.find(item=>item.id===id);if(!chosen||training||switching||starting)return;
  const generation=++loadGeneration;pause();loading=true;configure();notice('Loading '+chosen.title+'…');
  try{
   const data=await loadNativeLevel(chosen);if(generation!==loadGeneration)return;
-  await audio?.close();if(generation!==loadGeneration)return;entry=chosen;({level,terrain}=data);game=new Game(level,terrain);renderer=new Renderer(canvas,level,data.actors);
-  audio=new Audio(data.sid);audio.muted=muted;audio.volume=volume;cursor=null;replay=null;hasStarted=false;
+  const retainedAudio=presentation==='enhanced'&&audio instanceof EnhancedAudio?audio:null;
+  if(retainedAudio)retainedAudio.reset();else await audio?.close();
+  if(generation!==loadGeneration)return;entry=chosen;({level,terrain}=data);actorFrames=data.actors;sidBytes=data.sid;game=new Game(level,terrain);renderer=makeRenderer();
+  audio=retainedAudio||makeAudio();audio.muted=muted;audio.volume=volume;cursor=null;replay=null;hasStarted=false;modeLabel();
   selected=level.skills[7]?7:Math.max(0,level.skills.findIndex(count=>count>0));$('assign').textContent='Assign '+SKILLS[selected];
   $('native-rating').value=entry.rating;fillLevels(entry.rating,entry.id);mission();overlay();notice('');updateProgress();
   history.replaceState(null,'','#'+entry.id);renderer.draw(game,cursor,selected);renderHistory();
@@ -171,7 +205,7 @@ function renderHistory(){
 async function saveAttempt(record,next){const transaction=db.transaction(['model','attempts'],'readwrite'),end=complete(transaction);transaction.objectStore('attempts').add(record);transaction.objectStore('model').put(next,ID);await end}
 function stopTraining(){if(!training)return;training.cancelled=true;training.worker?.terminate();training.reject?.(new DOMException('Stopped','AbortError'));$('training-status').textContent='Stopping…'}
 async function train(){
- if(training||!db||level.id!=='fun-01')return;
+ if(training||loading||switching||starting||!db||level.id!=='fun-01')return;
  if(records.length+archivedRecords.length+Number($('training-count').value)>2000){$('training-status').textContent='Archive limit reached. Export your experience.';return}
  pause();const owner={id:crypto.randomUUID(),cancelled:false},attempts=Number($('training-count').value);let failure=null;training=owner;configure();renderHistory();
  try{
@@ -204,7 +238,7 @@ $('export-training').onclick=()=>{
  link.href=url;link.download='greenmarch-native-experience.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
 };
 window.addEventListener('pagehide',()=>{stopTraining();audio?.close();db?.close()});
-window.greenmarch={get ready(){return !!game&&!loading},get game(){return game},get running(){return running},get audio(){return audio},get renderer(){return renderer},get learning(){return {model,records,busy:!!training}},get campaign(){return {entry,entries,completed:[...completed]}},pause,play,restart};
+window.greenmarch={get ready(){return !!game&&!loading&&!switching},get presentation(){return presentation},get game(){return game},get running(){return running},get audio(){return audio},get renderer(){return renderer},get learning(){return {model,records,busy:!!training}},get campaign(){return {entry,entries,completed:[...completed]}},pause,play,restart};
 
 try{
  catalogue=await loadCatalogue();entries=catalogue.ratings.flatMap(rating=>rating.levels);

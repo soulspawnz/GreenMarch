@@ -1,0 +1,6 @@
+.presentation-card label{display:block;font-size:12px;color:#a4b09b;margin-bottom:8px}
+.presentation-card select{width:100%;padding:12px 8px;background:#101d20;color:#e4e9df;border:1px solid var(--line);border-radius:5px}
+.presentation-card p{color:#b6cda9;font-size:12px}
+.presentation-card small{color:#9aab9c;font-size:11px}
+body[data-presentation=enhanced] #game{image-rendering:auto}
+body[data-presentation=enhanced] .screen-top{background:#17353b}

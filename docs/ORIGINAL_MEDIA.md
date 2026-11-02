@@ -17,6 +17,11 @@ The native campaign uses original terrain, lemming animations, entrance, exit
 and SID music. [Features and limits](NATIVE_ENGINE.md) describes the current
 engine and its supported content.
 
+The optional Enhanced presentation uses GreenMarch's own woodland vector scenery,
+character drawing, terrain treatment, instrumental soundtrack and synthesized
+effects. Those additions follow the project's GPL-3.0 license; the original
+Lemmings assets retain their existing rights and attribution.
+
 Gameplay now runs in GreenMarch's JavaScript engine. An audio-only 6502 runner
 plays the original SID routines through standalone reSID; it does not run a
 C64 machine or gameplay. Hardware audio can vary with physical SID/filter models.

@@ -22,7 +22,27 @@ recreation, **not a frame-perfect port**. All 100 layouts are included, but not
 every puzzle has been solved or checked for exact agreement with the original.
 More demanding routes may expose physics differences.
 
-## Music
+## Two presentations
+
+**Classic · C64** retains the original graphics, animations and SID audio.
+**Enhanced · Woodland** adds vector woodland scenery, lit and textured terrain,
+new character animations, a new 20-second instrumental loop and synthesized
+skill, rescue and explosion effects. The two presentations use exactly the same
+simulation, terrain collision, inventories and recorded inputs. Switching preserves
+the game and camera, including a paused game. The preference stays in this browser.
+Enhanced music restarts when changing presentation; switching does not rewind gameplay.
+The soundtrack resets between levels while retaining its audio player.
+
+The enhanced artwork and music are GreenMarch additions. They do not claim to
+be original C64 assets or a remaster of the original score.
+
+Enhanced presentation passed all 100 level-start and rendered-audio checks.
+The parallel test uses a silent audio sink to verify real PCM independently of
+the test machine's speakers. Separate browser checks verified exact paused-state
+preservation, active switching, mute and a 10/10 finish. Both Chromium phone-touch
+profiles also completed Fun 1 with 10/10 rescued. Physical phones remain untested.
+
+## Original music
 
 Original music runs through a separate audio-only 6502/SID player and reSID.
 The native page loads no full C64 machine, ROMs or disks. Pause and mute silence

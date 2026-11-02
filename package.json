@@ -1,6 +1,6 @@
 {
   "name": "greenmarch",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "A native browser recreation of C64 Lemmings with original graphics and SID music.",
   "repository": {
     "type": "git",

@@ -6,6 +6,14 @@ private; publish concise, accurate results and limitations.
 
 ## Native gameplay
 
+- Run `test/presentation-browser.mjs` for mode switching, exact paused-state
+  preservation, active playback, audio, mute, completion and saved preference.
+- Pass `enhanced` after the URL to the campaign browser and mobile suites to
+  exercise the second renderer/audio path across all levels and phone profiles.
+- The parallel campaign sweep uses a silent Web Audio sink and measures real
+  rendered PCM. Keep that test-only setup distinct from speaker output. A running
+  AudioContext with a stalled clock does not establish that audio is rendering.
+
 Use installed Playwright and Chromium with explicit paths. Do not reinstall
 existing dependencies. See [development commands](../../docs/DEVELOPMENT.md).
 

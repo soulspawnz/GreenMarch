@@ -14,6 +14,12 @@ and all eight skills.
 The normal game runs without a C64 emulator, ROMs or disk loading. Original
 music uses a separate, audio-only 6502/SID player. No installation is required.
 
+Choose **Classic · C64** for the original presentation, or **Enhanced · Woodland**
+for layered scenery, textured terrain, new animated characters, a new instrumental
+soundtrack and skill effects. Switch presentation during a level without losing
+your game; your choice is saved in this browser.
+[Preview the enhanced graphics](artwork/enhanced-mode.png).
+
 ## Play
 
 Choose a rating and level, then click **Load level** and **Play level**. Select

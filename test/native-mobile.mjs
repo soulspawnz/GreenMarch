@@ -3,7 +3,7 @@ import {mkdir,writeFile} from 'node:fs/promises';
 import {pathToFileURL} from 'node:url';
 import path from 'node:path';
 
-const [pw,executablePath,out,base='https://soulspawnz.github.io/GreenMarch/']=process.argv.slice(2);
+const [pw,executablePath,out,base='https://soulspawnz.github.io/GreenMarch/',presentation='classic']=process.argv.slice(2);
 const {chromium}=await import(pathToFileURL(pw).href);
 await mkdir(out,{recursive:true});
 const browser=await chromium.launch({executablePath,headless:true});
@@ -15,6 +15,7 @@ async function exercise(name,width,height,deviceScaleFactor){
  try {
   await page.goto(base);
   await page.waitForFunction(()=>window.greenmarch?.ready&&!document.querySelector('#train').disabled);
+  if(presentation!=='classic'){await page.locator('#presentation').selectOption(presentation);await page.waitForFunction(mode=>greenmarch.ready&&greenmarch.presentation===mode,presentation)}
   assert(await page.evaluate(()=>navigator.maxTouchPoints>0));
   await page.evaluate(()=>document.querySelector('#game').addEventListener('pointerdown',e=>{(window.mobilePointers??=[]).push(e.pointerType)}));
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));

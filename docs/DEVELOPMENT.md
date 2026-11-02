@@ -54,6 +54,18 @@ actual terrain removal, descent, displayed animation frames and final outcome.
 Some placements lose the level; the check distinguishes a poor route from an
 incorrect skill or animation. Its default URL is the local native build.
 
+## Presentation checks
+
+`test/presentation-browser.mjs PLAYWRIGHT_ENTRY CHROMIUM_EXE PRIVATE_OUTPUT_DIR [URL]`
+checks Classic/Enhanced switching, exact paused simulation preservation, camera,
+active gameplay, music, mute, a complete run and saved preference. Add `enhanced`
+after the URL when running `native-campaign-browser.mjs` or `native-mobile.mjs`
+to exercise upgraded rendering/audio. Local serving supports MPEG, WAV and Ogg
+audio; use the `PORT` environment variable if the default preview port is occupied.
+The parallel campaign sweep renders real PCM through a silent Web Audio sink
+to avoid physical output-device startup delays. It verifies generated audio,
+not sound from speakers. Normal gameplay keeps the usual audio output device.
+
 ## Original reference build
 
 `emulator-reference.html`, `machine.html`, `main.mjs`, `campaign-machine.mjs` and
