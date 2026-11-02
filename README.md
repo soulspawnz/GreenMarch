@@ -31,6 +31,9 @@ Use **Speed ×4** to advance time faster. **Restart level** starts a fresh nativ
 simulation. **Next level** advances through the campaign. Start with Fun 1,
 **Just dig!**, to learn Digger; the next tutorials introduce the other skills.
 
+**End level** finishes immediately using the number already rescued. Use it
+when only Blockers remain; meet the rescue target to continue to the next level.
+
 ## Controls
 
 | Input | Action |

@@ -14,6 +14,11 @@ explode after a countdown. Walking does not deform the soil.
 
 The engine handles multiple entrances, release rates, steel, directional walls,
 water and lethal regions, pause, restart, results and campaign progression.
+**End level** evaluates the current rescue count immediately, while playing or
+paused. Unrescued lemmings do not count toward the target. Remaining Blockers stay
+in place on the stopped field; no timer wait or explosions are required. The
+recorded end command replays at the same simulation tick. It is disabled during
+training and recorded playback.
 The renderer uses the original multicolor terrain, 300 animation poses and
 animated object strips. Digger displays its downward-digging poses.
 

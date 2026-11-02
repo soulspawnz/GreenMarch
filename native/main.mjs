@@ -50,6 +50,7 @@ function configure(){
  $('presentation').disabled=!game||loading||!!training||switching||starting;
  $('load-level').disabled=loading||!!training||!catalogue||switching||starting;
  $('next-level').disabled=loading||!!training||!nextEntry()||switching||starting;
+ $('end-level').disabled=!game||!hasStarted||game.status!=='playing'||loading||!!training||switching||starting||!!replay;
 }
 function pause(){running=false;held.clear();configure()}
 async function play(){
@@ -66,7 +67,7 @@ function overlay(){
  $('overlay-copy').textContent=`${level.lemmings} lemmings · save ${level.savePercent}% · ${level.minutes} minutes.`;
  $('play').textContent='Play level';$('continue-level').hidden=true;$('curtain').style.display='flex';
 }
-function restart(){if(!game||loading||training)return;pause();replay=null;game.restart();audio.reset();hasStarted=false;overlay();notice('');hud();renderer.draw(game,cursor,selected)}
+function restart(){if(!game||loading||training)return;pause();replay=null;game.restart();audio.reset();hasStarted=false;overlay();notice('');configure();hud();renderer.draw(game,cursor,selected)}
 function selectSkill(skill){
  if(!game||!game.skills[skill])return;selected=skill;
  $('assign').textContent='Assign '+SKILLS[skill];notice(SKILLS[skill]+' selected. Click or tap a lemming.');hud();
@@ -91,7 +92,7 @@ function hud(){
 function result(){
  pause();$('overlay-title').textContent=game.status==='won'?'A way home!':'Try again.';
  const timedOut=game.tick>=level.minutes*60*TICKS_PER_SECOND;
- $('overlay-copy').textContent=`${game.rescued} of ${level.lemmings} rescued · ${Math.round(game.rescued/level.lemmings*100)}%. ${timedOut?'Time is up.':'All lemmings accounted for.'}`;
+ $('overlay-copy').textContent=`${game.rescued} of ${level.lemmings} rescued · ${Math.round(game.rescued/level.lemmings*100)}%. ${game.endedEarly?'Level ended by player.':timedOut?'Time is up.':'All lemmings accounted for.'}`;
  $('play').textContent='Play again';$('continue-level').hidden=game.status!=='won'||!nextEntry();$('curtain').style.display='flex';
  if(game.status==='won'){
   completed.add(entry.id);try{localStorage.setItem(progressKey,JSON.stringify([...completed]))}catch{}
@@ -169,6 +170,10 @@ $('scroll-left').onclick=()=>renderer?.scroll(-16);$('scroll-right').onclick=()=
 for(const [id,delta]of [['release-down',-5],['release-up',5]])$(id).onclick=()=>{if(game&&!replay)game.changeRelease(game.releaseRate+delta);hud()};
 function nuke(){if(!running||replay)return;if(performance.now()<nukeUntil){game.nuke();nukeUntil=0;notice('Nuke started. Restart to try another route.')}else{nukeUntil=performance.now()+2500;notice('Tap Nuke again to end this attempt.')}}
 $('nuke').onclick=nuke;
+$('end-level').onclick=()=>{
+ if(!game||!hasStarted||game.status!=='playing'||loading||training||switching||starting||replay)return;
+ game.finish();result();hud();renderer.draw(game,cursor,selected);
+};
 async function fullscreen(){try{if(document.fullscreenElement)await document.exitFullscreen();else await $('native-stage').requestFullscreen()}catch{notice('Fullscreen is unavailable in this browser.')}}
 $('fullscreen').onclick=()=>void fullscreen();
 window.addEventListener('keydown',event=>{

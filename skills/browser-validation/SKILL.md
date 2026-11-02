@@ -18,6 +18,9 @@ Use installed Playwright and Chromium with explicit paths. Do not reinstall
 existing dependencies. See [development commands](../../docs/DEVELOPMENT.md).
 
 - Run `test/native.mjs` for deterministic engine, asset and audio checks.
+- Run `test/end-level-browser.mjs` for a winning Classic mouse Fun3 Blocker route
+  and an Enhanced touch attempt ended below target. Check immediate End level
+  results, unchanged rescue totals, frozen survivors, progression and restart.
 - Run `test/native-campaign.mjs` for all 100 configurations, binary identities,
   inventories, animation bounds, baseline simulations and snapshots.
 - Run `test/native-tutorials.mjs` for seven complete solutions covering all eight

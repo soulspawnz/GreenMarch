@@ -56,6 +56,13 @@ incorrect skill or animation. Its default URL is the local native build.
 
 ## Presentation checks
 
+`test/end-level-browser.mjs PLAYWRIGHT_ENTRY CHROMIUM_EXE PRIVATE_OUTPUT_DIR [URL]`
+plays the Fun 3 Blocker route with Classic mouse controls and checks an Enhanced
+touch attempt ended below the rescue target. It verifies immediate results,
+preserved counts, paused survivors, progression, early loss and restart.
+`test/end-level.mjs` checks deterministic
+end commands and snapshots and is included in `npm run test:native`.
+
 `test/presentation-browser.mjs PLAYWRIGHT_ENTRY CHROMIUM_EXE PRIVATE_OUTPUT_DIR [URL]`
 checks Classic/Enhanced switching, exact paused simulation preservation, camera,
 active gameplay, music, mute, a complete run and saved preference. Add `enhanced`

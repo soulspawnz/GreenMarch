@@ -12,7 +12,7 @@ export class Game {
  restart(){
   this.terrain=new Uint8Array(this.original);this.actors=[];this.tick=0;this.spawned=0;this.rescued=0;this.dead=0;
   this.skills=[...this.level.skills];this.release=0;this.releaseRate=this.level.releaseRate;this.entranceClosed=false;
-  this.status='playing';this.events=[];this.inputs=[];this.changed=true;
+  this.status='playing';this.endedEarly=false;this.events=[];this.inputs=[];this.changed=true;
  }
  solid(x,y){x=Math.floor(x);y=Math.floor(y);if(y<0)return false;if(x<0||x>=this.level.width)return true;if(y>=this.level.height)return false;return this.terrain[y*this.level.width+x]!==0}
  supported(a,y=a.y){return this.level.physicsVersion===2?(this.solid(a.x-2,y)||this.solid(a.x-2+a.dir,y)):this.solid(a.x,y)}
@@ -162,7 +162,7 @@ export class Game {
  }
  step(actions=[]){
   if(this.status!=='playing')return this.status;this.events=[];
-  for(const action of actions){if(action.command==='nuke')this.nuke();else if(action.command==='release')this.changeRelease(action.value);else this.assign(action.id,action.skill)}
+  for(const action of actions){if(action.command==='end')return this.finish();else if(action.command==='nuke')this.nuke();else if(action.command==='release')this.changeRelease(action.value);else this.assign(action.id,action.skill)}
   this.tick++;
   const rate=this.level.releaseIncrements?.[this.releaseRate]??Math.max(1,(this.level.releaseIncrement||18)+(this.releaseRate-this.level.releaseRate));
   this.release+=this.spawned?rate:(this.level.initialReleaseIncrement||8);
@@ -196,11 +196,18 @@ export class Game {
   if(this.tick>=this.level.minutes*60*TICKS_PER_SECOND||accounted)this.status=this.rescued>=(this.level.saveCount??Math.ceil(this.level.lemmings*this.level.savePercent/100))?'won':'lost';
   return this.status;
  }
- snapshot(){return {version:2,level:this.level.id,tick:this.tick,spawned:this.spawned,rescued:this.rescued,dead:this.dead,skills:[...this.skills],release:this.release,releaseRate:this.releaseRate,entranceClosed:this.entranceClosed,status:this.status,actors:structuredClone(this.actors),terrain:Array.from(this.terrain),inputs:structuredClone(this.inputs)}}
+ finish(){
+  if(this.status!=='playing')return this.status;
+  this.endedEarly=true;this.inputs.push({tick:this.tick,command:'end'});
+  this.status=this.rescued>=(this.level.saveCount??Math.ceil(this.level.lemmings*this.level.savePercent/100))?'won':'lost';
+  return this.status;
+ }
+ snapshot(){return {version:2,level:this.level.id,tick:this.tick,spawned:this.spawned,rescued:this.rescued,dead:this.dead,skills:[...this.skills],release:this.release,releaseRate:this.releaseRate,entranceClosed:this.entranceClosed,status:this.status,endedEarly:this.endedEarly,actors:structuredClone(this.actors),terrain:Array.from(this.terrain),inputs:structuredClone(this.inputs)}}
  restore(s){
   if(![1,2].includes(s.version)||s.level&&s.level!==this.level.id||s.terrain.length!==this.original.length)throw Error('Incompatible native state');
   for(const key of ['tick','spawned','rescued','dead','release','status'])this[key]=s[key];
   this.releaseRate=s.releaseRate??this.level.releaseRate;this.entranceClosed=!!s.entranceClosed;
+  this.endedEarly=!!s.endedEarly;
   this.skills=[...s.skills];this.actors=structuredClone(s.actors);this.terrain=new Uint8Array(s.terrain);this.inputs=structuredClone(s.inputs);this.events=[];this.changed=true;
  }
 }
