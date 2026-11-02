@@ -14,6 +14,10 @@ existing dependencies. See [development commands](../../docs/DEVELOPMENT.md).
   SID output, pause/mute, training isolation, active Stop, replay and persistence.
 - Run `test/native-mobile.mjs` for touch assignment, panning, audio, rotation,
   actual level completion and restart on two phone-size profiles.
+- For skill regressions, verify both simulation behavior and actual drawn poses.
+  `test/digger-playtests.mjs` runs twelve complete desktop/touch games and checks
+  Digger inventory, descent, terrain changes and absence of Blocker poses. Poor
+  placement may lose a level without indicating the wrong skill was assigned.
 - Distinguish Chromium touch simulation from physical phones and iOS Safari.
 - Verify actual PCM after a user gesture; an AudioContext or meter alone is
   insufficient. Verify pause and mute silence, then resumed output.

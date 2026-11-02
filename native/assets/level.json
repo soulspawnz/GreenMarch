@@ -73,8 +73,9 @@
       "count": 4
     },
     "dig": {
-      "start": 52,
-      "count": 16
+      "start": 84,
+      "count": 8,
+      "stride": 2
     },
     "exit": {
       "start": 204,

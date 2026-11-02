@@ -3,8 +3,8 @@
   "files": [
     {
       "path": "native/assets/level.json",
-      "bytes": 28476,
-      "sha256": "ac8e1f0c66a7056f924242dab2fdd4412fa3239e7b54d02d199d5823031fbf66"
+      "bytes": 28494,
+      "sha256": "9b4cba16d0ba04b5036c806df40b3bdddcc2c0d1566bcde5a07c50f0117e6c85"
     },
     {
       "path": "vendor/jssid/resid.mjs",

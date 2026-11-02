@@ -33,6 +33,13 @@ SID output, mute, pause, rotation, full level completion and restart. These are
 browser simulations; they do not establish compatibility with physical phones or
 iOS Safari. The default URL is the public GitHub Pages build.
 
+`test/digger-playtests.mjs PLAYWRIGHT_ENTRY CHROMIUM_EXE PRIVATE_OUTPUT_DIR [URL]`
+runs twelve complete games across six Digger placements using desktop mouse,
+keyboard, Assign Digger and mobile touch input. It checks the consumed skill,
+actual terrain removal, descent, displayed animation frames and final outcome.
+Some placements lose the level; the check distinguishes a poor route from an
+incorrect skill or animation. Its default URL is the local native build.
+
 ## Original reference build
 
 `emulator-reference.html`, `machine.html`, `main.mjs`, `campaign-machine.mjs` and

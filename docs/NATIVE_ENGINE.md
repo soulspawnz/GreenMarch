@@ -19,6 +19,12 @@ level or browser check does not establish exact agreement with the original.
 
 The renderer uses the original terrain, 300 animation poses and entrance/exit
 graphics. Canvas displays the multicolor pixels with nearest-neighbor scaling.
+The Digger animation uses its downward-digging poses; an earlier visual bug
+incorrectly displayed the Blocker animation while the lemming was digging.
+Twelve complete playtests (six desktop and six Chromium touch simulations)
+verified Digger assignment, soil removal, descent and the displayed poses.
+Six placements won with 70-90% rescued; six lost. Those routing results are
+separate from the skill/animation checks, which passed in all twelve runs.
 Level configuration and SHA-256 asset identities are in
 [level.json](../native/assets/level.json).
 

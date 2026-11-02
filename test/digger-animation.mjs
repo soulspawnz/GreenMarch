@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {Game} from '../native/engine.mjs';
+import {animationFrame} from '../native/render.mjs';
+const level=JSON.parse(await readFile(new URL('../native/assets/level.json',import.meta.url),'utf8'));
+const terrain=new Uint8Array(await readFile(new URL('../native/assets/terrain.bin',import.meta.url)));
+assert.deepEqual(Array.from({length:16},(_,phase)=>animationFrame(level,{state:'dig',phase})),[84,86,88,90,92,94,96,98,84,86,88,90,92,94,96,98]);
+assert.equal(animationFrame(level,{state:'walk',dir:1,phase:3}),11);
+assert.equal(animationFrame(level,{state:'walk',dir:-1,phase:3}),3);
+const game=new Game(level,terrain);while(!game.actors.some(a=>a.state==='walk'&&a.x===139))game.step();
+const actor=game.actors.find(a=>a.state==='walk'&&a.x===139),y=actor.y;
+assert.equal(game.assign(actor.id,3),false,'Blocker is unavailable');
+assert.equal(game.assign(actor.id,7),true);assert.equal(actor.state,'dig');assert.equal(game.skills[7],9);
+for(let i=0;i<16;i++)game.step();
+assert(actor.y>y);assert(game.terrain.some((v,i)=>v!==terrain[i]));assert.equal(game.inputs[0].skill,7);
+console.log('[OK] Digger uses its eight downward-digging poses, removes soil and descends; Blocker is not assigned.');
