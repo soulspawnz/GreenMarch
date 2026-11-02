@@ -1,0 +1,69 @@
+{
+  "files": [
+    {
+      "path": "media/failure.bin",
+      "bytes": 193880,
+      "sha256": "a832aebb3815170a003ea3d4d55176e4228bb34943638f5f691d115fb33166a7"
+    },
+    {
+      "path": "media/level-one.bin",
+      "bytes": 193880,
+      "sha256": "e0c96e7dd40258488e5d82ed0492f26e2100c2fb241e0930a638bb6efe72567a"
+    },
+    {
+      "path": "media/manual-code.bin",
+      "bytes": 193880,
+      "sha256": "d37b1f6aabbdf5e7efad165a95ea08967704776c692e5c50a8caa600d801dd04"
+    },
+    {
+      "path": "media/play.bin",
+      "bytes": 193880,
+      "sha256": "cb196a86b0a4845dcd2981fa66e67339a70d1edf5d714d5c5132390d576ded83"
+    },
+    {
+      "path": "media/success.bin",
+      "bytes": 193880,
+      "sha256": "3a35922587c1dd1d370b4f6fe5b29b13d9684cd15d4aa546f761b2f62b061c2b"
+    },
+    {
+      "path": "media/title.bin",
+      "bytes": 193880,
+      "sha256": "1c7ffaf3a6f410c7fe91e041d250708492c4b60d7cef9e0fc7817966620513df"
+    },
+    {
+      "path": "vendor/emulatorjs/cores/vice_x64sc-legacy-wasm.data",
+      "bytes": 1523390,
+      "sha256": "8a22bc81c0dd7104cd23ceec5117a9f47ca9503e280e4fbc9d0346f51b75253e"
+    },
+    {
+      "path": "vendor/emulatorjs/cores/vice_x64sc-thread-legacy-wasm.data",
+      "bytes": 1590381,
+      "sha256": "bae10feba20f8d59c1068146c26bb982ccc054d6faa6ea4013f1530f1a96a5bd"
+    },
+    {
+      "path": "vendor/emulatorjs/cores/vice_x64sc-thread-wasm.data",
+      "bytes": 1592272,
+      "sha256": "e4f922e81d76fb6864e980d68d33c2d624c333c4763fc305ceaee9906da876e2"
+    },
+    {
+      "path": "vendor/emulatorjs/cores/vice_x64sc-wasm.data",
+      "bytes": 1523457,
+      "sha256": "77f58884c81b58721cbc4754ffc5574838219258e9390630c352a494a3f335ab"
+    },
+    {
+      "path": "media/campaign.zip",
+      "bytes": 524987,
+      "sha256": "a1707f96889cd4caf8665bfe4e46ad41b59ab9a6d71c54a5052678ef8fdcbb85"
+    },
+    {
+      "path": "media/campaign.json",
+      "bytes": 64881,
+      "sha256": "5f3fe64bb6bb3c23dba102b9b3171a91eba31327f140179b0600fab0d77ea77e"
+    },
+    {
+      "path": "media/campaign-validation.json",
+      "bytes": 42003,
+      "sha256": "48f0d7bcb3c0749ddffa38ce2ba887a4f813432921cb209fbd7ed12cb7e2b9ce"
+    }
+  ]
+}

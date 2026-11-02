@@ -1,0 +1,13 @@
+{
+  "patches": [
+    {
+      "path": "src/emulator.js",
+      "reason": "Disable external update probe; pause rather than restarting VICE during document teardown. Browser host owns core/audio lifecycle. No gameplay changes. Initialize settings before the multi-disk menu so disk defaults can be stored during startup.",
+      "sha256": "1cd4ac807759d317519a6e751206325ecf66a506c4440a1b251d45fbb3ec562d"
+    }
+  ],
+  "extraFiles": [
+    "localization/en-US.json",
+    "cores/reports/vice_x64sc.json"
+  ]
+}

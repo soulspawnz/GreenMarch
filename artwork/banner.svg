@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+  <rect width="1280" height="640" fill="#101611"/>
+  <path d="M0 544h320v-48h224v-48h224v-48h224v-48h288v288H0z" fill="#172014"/>
+  <g stroke="#303c2e" fill="none"><path d="M64 64h1152v512H64z"/><path d="M96 112h1088M96 528h1088"/></g>
+  <text x="112" y="172" fill="#889487" font-family="monospace" font-size="15" letter-spacing="5">LEMMINGS / COMMODORE 64</text>
+  <text x="108" y="295" fill="#b0d66b" font-family="monospace" font-weight="bold" font-size="92" letter-spacing="-5">GREENMARCH</text>
+  <text x="112" y="354" fill="#e4e9df" font-family="sans-serif" font-size="27">Every little life counts.</text>
+  <text x="112" y="490" fill="#889487" font-family="monospace" font-size="15" letter-spacing="2">ORIGINAL PIXELS. ORIGINAL SID. ONE MORE RESCUE.</text>
+  <g shape-rendering="crispEdges" fill="#b0d66b"><path d="M952 402h16v8h8v16h-8v16h-8v-16h-8zM1024 354h16v8h8v16h-8v16h-8v-16h-8zM1096 306h16v8h8v16h-8v16h-8v-16h-8z"/><path d="M944 458h40v8h-40zm72-48h40v8h-40zm72-48h40v8h-40z" fill="#4e6938"/></g>
+</svg>

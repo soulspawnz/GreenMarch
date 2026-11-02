@@ -1,0 +1,8 @@
+import {Game} from './engine.mjs';
+export const ID='greenmarch-native-fun01-1';
+export const PATTERNS=[132,134,136,138,139,140,141,142].map(x=>({id:'dig-'+x,x}));
+export const blank=()=>({version:ID,attempts:0,arms:{},champion:null});
+export function choose(model,random=Math.random){const fresh=PATTERNS.find(p=>!model.arms[p.id]?.count);if(fresh)return fresh;if(random()<.25)return PATTERNS[Math.floor(random()*PATTERNS.length)];return [...PATTERNS].sort((a,b)=>model.arms[b.id].mean-model.arms[a.id].mean)[0]}
+export function trial(level,terrain,pattern){const game=new Game(level,terrain);let assigned=false;while(game.status==='playing'){if(!assigned){const actor=game.actors.find(a=>a.state==='walk'&&a.x===pattern.x&&a.y<100);if(actor)assigned=game.assign(actor.id)}game.step()}return {pattern:pattern.id,outcome:game.status,rescued:game.rescued,ticks:game.tick,inputs:game.inputs}}
+export function update(model,record){const next=structuredClone(model),arm=next.arms[record.pattern]||{count:0,mean:0},reward=(record.outcome==='won'?1000:0)+record.rescued*10;next.arms[record.pattern]={count:arm.count+1,mean:arm.mean+(reward-arm.mean)/(arm.count+1)};next.attempts++;if(record.outcome==='won'&&(!next.champion||record.rescued>next.champion.rescued||record.rescued===next.champion.rescued&&record.ticks<next.champion.ticks))next.champion=structuredClone(record);return next}
+export function verify(level,terrain,record){const game=new Game(level,terrain);let at=0;while(game.status==='playing'){const actions=[];while(at<record.inputs.length&&record.inputs[at].tick===game.tick){actions.push(record.inputs[at++])}game.step(actions)}return at===record.inputs.length&&game.status===record.outcome&&game.rescued===record.rescued&&game.tick===record.ticks}

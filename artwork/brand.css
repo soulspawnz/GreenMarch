@@ -1,0 +1,6 @@
+.wordmark{position:relative;padding-left:43px;font-size:22px}
+.wordmark img{position:absolute;left:0;top:2px;width:32px;height:32px}
+.wordmark span{font-size:8px;letter-spacing:1.6px}
+@media(max-width:760px){.wordmark{font-size:19px;padding-left:38px}.wordmark span{font-size:7px;letter-spacing:1.2px}.wordmark img{width:29px;height:29px}}
+
+.campaign label{display:block;font-size:11px;color:#a4b09b;margin:12px 0 6px}.campaign select{width:100%;min-width:0;background:#101611;color:#e4e9df;border:1px solid #46503e;border-radius:4px;padding:10px;font:12px Arial}.campaign-actions{display:flex;gap:6px;margin-top:12px}.campaign-actions button{flex:1;font-size:11px;padding:10px 5px}.campaign-actions button:first-child{background:#b0d66b;color:#15200e}.campaign>p:not(.eyebrow){font-size:11px}#insert-disk{margin-top:10px;font-size:11px;width:100%}

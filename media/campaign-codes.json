@@ -1,0 +1,158 @@
+{
+  "sources": [
+    "https://www.deveria.com/alexis/lemmings/lemmings/c64/c64codes.html",
+    "https://www.c64-wiki.com/wiki/Lemmings"
+  ],
+  "ratings": [
+    {
+      "name": "Fun",
+      "prefix": "F",
+      "codes": [
+        null,
+        "GEDGILBFIE",
+        "BLIJKJAJDB",
+        "KJGHALBDDE",
+        "JIDJGHGFCL",
+        "LEHIHBEBJC",
+        "GCAAFKJLAD",
+        "HJBHFKDIJJ",
+        "IBBHHBLDHK",
+        "FJBHHKHAKH",
+        "HHEBFEJAKI",
+        "AFCCIJLIIH",
+        "JGFEEDDEHA",
+        "KKIHCKAGBB",
+        "EAFALALDCC",
+        "AFIBLCHEHC",
+        "JIFAHKBDIA",
+        "FFIBDFEBJC",
+        "FJCAJGLBBL",
+        "GHHILIKBAB",
+        "JCCLCADGAH",
+        "FDIKBBKDGC",
+        "BIKDLHEDIL",
+        "KDCAJKAKFG",
+        "KJEDHGCDCK"
+      ]
+    },
+    {
+      "name": "Tricky",
+      "prefix": "T",
+      "codes": [
+        "DJKALCDKLJ",
+        "FHIBDFEDGF",
+        "JFIBLACJCL",
+        "HEEBEDIGHI",
+        "FADGGFADKJ",
+        "ECHGGDEDID",
+        "LEDBFKJABF",
+        "IBGHDGFEHI",
+        "IHKBBDKJDJ",
+        "EADGGDIFAH",
+        "ALALALHGBB",
+        "FDJCKJHGDA",
+        "AHLGDEDLHI",
+        "ECBIFCJKBB",
+        "LKJIFEBLAJ",
+        "CKLAGFKAJH",
+        "BHFGGAJLAE",
+        "LAFGFKLADA",
+        "ELLISAAAAH",
+        "EAHGAKBDCD",
+        "LAGBABCIEA",
+        "HALGFEDFLK",
+        "BHLDLEJGDE",
+        "DFIJFJIKLE",
+        "DHKHBKDIFK"
+      ]
+    },
+    {
+      "name": "Taxing",
+      "prefix": "X",
+      "codes": [
+        "IGDHKDIJFA",
+        "CCHALCJGBB",
+        "CACAGJGAFA",
+        "JFIBIEJLAF",
+        "HDCGLGFELF",
+        "JILKFECIEK",
+        "HLLILAIHEL",
+        "GELEEAHGCC",
+        "JKFGGLBDGH",
+        "JKFIFCKKBB",
+        "LKJIGFCDIH",
+        "JAHEEDEBDE",
+        "CAJDJKILAC",
+        "JAICIFCHAD",
+        "GCCKHEDICG",
+        "IHCGCJLIGB",
+        "GIIHGFAIJG",
+        "CAJCIKFEBH",
+        "GDALCDJLKD",
+        "AHAFKJLCBL",
+        "CGDHAKBDCC",
+        "LKLGGBFKIH",
+        "KLIAAHAJJI",
+        "HAFGKGLDHK",
+        "JIFKIEDLEJ"
+      ]
+    },
+    {
+      "name": "Mayhem",
+      "prefix": "M",
+      "codes": [
+        "BCHIAFKCIG",
+        "JCADJFEDFC",
+        "GKFGJLDJLE",
+        "IJCFFEDALI",
+        "EACJALHACG",
+        "KJKFEJCBDH",
+        "CABDJGHFDG",
+        "GJGGLCJAJC",
+        "LKAFLBFGJA",
+        "FDKBDHAGHC",
+        "FAFGGAHIIH",
+        "LEFGEJCJKI",
+        "KHKBLEDIHI",
+        "DHKIKBCABJ",
+        "CGFEEDCEHC",
+        "AHEFFAHHEA",
+        "EFGHFKCGDH",
+        "GJEBAKBDAC",
+        "EAJACHGBJK",
+        "AJGBDJLIIG",
+        "GFDILCDHEL",
+        "KDJAKGFCHG",
+        "BIDAJIKBIB",
+        "JIFEKAAJDG",
+        "FCELKBBLLK"
+      ]
+    }
+  ],
+  "nativeCorrections": [
+    {
+      "id": "taxing-01",
+      "previous": "IGDGKDIJFA",
+      "code": "IGDHKDIJFA",
+      "evidence": "Original TY file contains the reverse-ordered literal for IGDHKDIJFA; the native password loader validates it."
+    },
+    {
+      "id": "taxing-07",
+      "previous": "HILILAIHEL",
+      "code": "HLLILAIHEL",
+      "evidence": "Original Taxing 6 result text, retained by the native briefing validator, gives HLLILAIHEL."
+    },
+    {
+      "id": "taxing-19",
+      "previous": "GDALLDJLKD",
+      "code": "GDALCDJLKD",
+      "evidence": "Original Taxing 18 next-level text gives GDALCDJLKD; retained by the native briefing validator."
+    },
+    {
+      "id": "mayhem-24",
+      "previous": "JIEEKAAJDG",
+      "code": "JIFEKAAJDG",
+      "evidence": "Original Mayhem 23 next-level text gives JIFEKAAJDG; retained by the native briefing validator."
+    }
+  ]
+}

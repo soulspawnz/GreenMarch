@@ -1,0 +1,6 @@
+import {OriginalSID} from './sid-player.mjs';
+class GreenMarchSID extends AudioWorkletProcessor {
+ constructor(){super();this.engine=null;this.blocks=0;this.port.onmessage=({data})=>{try{if(data.type==='init'){this.engine=new OriginalSID(new Uint8Array(data.bytes),sampleRate);this.port.postMessage({type:'ready'})}else if(this.engine){if(data.type==='configure')Object.assign(this.engine,{paused:!!data.paused,muted:!!data.muted,volume:Math.max(0,Math.min(.6,Number(data.volume)||0))});else if(data.type==='reset')this.engine.reset();else if(data.type==='effect')this.engine.effect(data.name)}}catch(error){this.port.postMessage({type:'error',message:error.message})}}}
+ process(inputs,outputs){const buffer=outputs[0][0];if(!this.engine){buffer.fill(0);return true}try{this.engine.render(buffer);if(++this.blocks%100===0){let sum=0,mean=0;for(const v of buffer)mean+=v;mean/=buffer.length;for(const v of buffer)sum+=(v-mean)**2;this.port.postMessage({type:'stats',ac:Math.sqrt(sum/buffer.length),frames:this.engine.frames,writes:this.engine.writes})}}catch(error){buffer.fill(0);this.port.postMessage({type:'error',message:error.message});return false}return true}
+}
+registerProcessor('greenmarch-original-sid',GreenMarchSID);

@@ -1,0 +1,17 @@
+{
+  "name": "greenmarch",
+  "version": "0.4.0",
+  "description": "A native browser recreation of C64 Lemmings with original graphics and SID music.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/soulspawnz/GreenMarch.git"
+  },
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node serve.mjs",
+    "build:campaign": "node tools/build-campaign.mjs",
+    "verify:media": "node tools/verify-media.mjs",
+    "test:native": "node test/native.mjs"
+  }
+}

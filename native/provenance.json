@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "files": [
+    {
+      "path": "native/assets/level.json",
+      "bytes": 28476,
+      "sha256": "ac8e1f0c66a7056f924242dab2fdd4412fa3239e7b54d02d199d5823031fbf66"
+    },
+    {
+      "path": "vendor/jssid/resid.mjs",
+      "bytes": 86648,
+      "sha256": "fa6c68305f7d69a8cc4468f4d1df8fb3cc6cfb13666272989a862a5947b44d55"
+    },
+    {
+      "path": "vendor/jssid/LICENSE.md",
+      "bytes": 20270,
+      "sha256": "fd8ed7c48573db63d66e5e3e43241dc27b387ca8baa6e1a36d9e8c4c221969fa"
+    },
+    {
+      "path": "vendor/jssid/UPSTREAM.json",
+      "bytes": 1495,
+      "sha256": "efcedfcfb2a2c4d753e627f467f20f7d7dbf986190d7a0c2cbe409c0f758ff57"
+    }
+  ]
+}

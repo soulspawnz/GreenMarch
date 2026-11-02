@@ -1,0 +1,72 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GreenMarch · original C64 display</title>
+<style>html,body,#game{margin:0;width:100%;height:100%;overflow:hidden;background:#000}canvas{image-rendering:pixelated!important}.ejs_menu_bar,.ejs_virtualGamepad_parent,.ejs_context_menu{display:none!important}.ejs_parent{background:#000!important}</style></head><body><div id="game"></div>
+<script>
+window.audioContexts=[];window.audioTaps=[];
+const NativeAudioContext=window.AudioContext;
+window.AudioContext=class extends NativeAudioContext{constructor(...a){super(...a);audioContexts.push(this)}};
+window.webkitAudioContext=window.AudioContext;
+const nativeConnect=AudioNode.prototype.connect;
+AudioNode.prototype.connect=function(destination,...args){
+ if(destination===this.context.destination){const tap=this.context.createAnalyser();tap.fftSize=2048;nativeConnect.call(this,tap);nativeConnect.call(tap,destination);audioTaps.push(tap);return destination;}
+ return nativeConnect.call(this,destination,...args);
+};
+const params=new URLSearchParams(location.search),fullBoot=params.get('mode')==='boot',requested=params.get('screen')||'play',autoPlay=params.get('autoplay')==='1';
+EJS_player='#game';EJS_core='vice_x64sc';EJS_threads=false;EJS_gameUrl='media/campaign.zip';EJS_gameName='Lemmings-C64';EJS_pathtodata='vendor/emulatorjs/';EJS_DEBUG_XX=true;EJS_startOnLoaded=true;EJS_language='en-US';EJS_disableAutoLang=true;EJS_noAutoFocus=true;EJS_disableLocalStorage=true;EJS_AdUrl='';EJS_Buttons={allButtons:false};EJS_volume=0;
+EJS_defaultOptions={vice_autoloadwarp:'enabled',vice_warp_boost:'enabled',vice_drive_sound_emulation:'disabled',vice_physical_keyboard_pass_through:'disabled',vice_mapper_a:'RETROK_1',vice_mapper_y:'RETROK_2',vice_mapper_x:'RETROK_3',vice_mapper_l:'RETROK_4',vice_mapper_r:'RETROK_5',vice_mapper_l2:'RETROK_6',vice_mapper_r2:'RETROK_7',vice_mapper_start:'RETROK_8',vice_mapper_select:'RETROK_SPACE'};
+let campaign;const skillPads=[8,1,9,10,11,12,13,3],cache=new Map(),sleep=ms=>new Promise(r=>setTimeout(r,ms));
+let running=false,sound=true,volume=.45,queue=Promise.resolve(),pointerTarget=null,pointerPending=false,pointerTask=Promise.resolve();
+function status(type,detail={}){parent.postMessage({source:'lemmings-c64',instance:params.get('instance')||'0',type,...detail},location.origin)}
+function applyVolume(){if(window.EJS_emulator?.started)EJS_emulator.setVolume(running&&sound?volume:0)}
+function ram(){const b=EJS_emulator.gameManager.getState();for(let i=16;i<512;i++){if(b[i]===67&&String.fromCharCode(...b.subarray(i,i+6))==='C64MEM'){if(b[i+16]!==0||b[i+17]!==1)throw Error('Unsupported C64 memory state');return b.subarray(i+26,i+26+65536)}}throw Error('C64 memory module missing')}
+async function followPointer(){if(pointerPending)return;pointerPending=true;const deadline=performance.now()+2400;try{while(pointerTarget&&running&&performance.now()<deadline){const m=ram(),dx=pointerTarget.x-m[0xb6],dy=pointerTarget.y-m[0xb8],g=EJS_emulator.gameManager;for(const [a,b,d] of [[6,7,dx],[4,5,dy]]){g.simulateInput(0,a,d < -1?1:0);g.simulateInput(0,b,d > 1?1:0)}if(Math.abs(dx)<=1&&Math.abs(dy)<=1)break;await sleep(22)}}finally{for(const i of [4,5,6,7])EJS_emulator.gameManager.simulateInput(0,i,0);pointerPending=false}}
+async function state(name){if(!['play','level-one','title','manual-code','success','failure'].includes(name))throw Error('Unknown screen');if(!cache.has(name)){const r=await fetch('media/'+name+'.bin');if(!r.ok)throw Error('Screen is unavailable');cache.set(name,new Uint8Array(await r.arrayBuffer()));}return cache.get(name)}
+window.machine={
+ ready:false,
+ async restore(name,play=false){EJS_emulator.gameManager.toggleMainLoop(0);running=false;applyVolume();const data=await state(name);EJS_emulator.gameManager.loadState(data);EJS_emulator.gameManager.toggleMainLoop(1);await sleep(120);EJS_emulator.gameManager.toggleFastForward(0);running=play;EJS_emulator.gameManager.toggleMainLoop(play?1:0);applyVolume();status('screen',{name,running});},
+ async resume(){await Promise.all(audioContexts.map(c=>c.resume()));running=true;EJS_emulator.gameManager.toggleMainLoop(1);applyVolume();status('running',{running});},
+ pause(){running=false;EJS_emulator.gameManager.toggleMainLoop(0);this.release();applyVolume();status('running',{running});},
+ setSound(on){sound=Boolean(on);applyVolume();if(sound)audioContexts.forEach(c=>c.resume());},
+ setVolume(value){volume=Math.max(0,Math.min(1,Number(value)||0));applyVolume();},
+ pad(index,on){if(this.ready&&running)EJS_emulator.gameManager.simulateInput(0,index,on?1:0)},
+ release(){pointerTarget=null;if(!window.EJS_emulator?.started)return;for(let i=0;i<16;i++)EJS_emulator.gameManager.simulateInput(0,i,0)},
+ cursor(){const b=ram();return {x:b[0xb6],y:b[0xb8],skill:b[0x5c0]}},
+ movePointer(x,y){if(!running)return;pointerTarget={x:Math.max(4,Math.min(83,Math.round(x))),y:Math.max(17,Math.min(167,Math.round(y)))};if(!pointerPending)pointerTask=followPointer();return pointerTask},
+ skill(n){if(n<1||n>8)return;this.pad(skillPads[n-1],true);setTimeout(()=>this.pad(skillPads[n-1],false),110)},
+ tapKey(key){const allowed=/^(SPACE|RETURN|UP|DOWN|ESCAPE|[a-z0-9]|MINUS|EQUALS|BACKSPACE)$/;if(!allowed.test(key))return;queue=queue.then(async()=>{
+  if(!running)return;const g=EJS_emulator.gameManager;
+  const frames=async count=>{const start=g.getFrameNum(),deadline=performance.now()+6000;while(running&&g.getFrameNum()-start<count){if(performance.now()>deadline)throw Error('Original keyboard did not advance');await sleep(12)}return running};
+  g.setVariable('vice_mapper_select','RETROK_'+key);if(!await frames(4))return;
+  g.simulateInput(0,2,1);try{await frames(8)}finally{g.simulateInput(0,2,0)}await frames(4);
+ });return queue},
+ audio(){let ac=0,peak=0;for(const tap of audioTaps){let b=new Float32Array(tap.fftSize);tap.getFloatTimeDomainData(b);let mean=b.reduce((a,v)=>a+v,0)/b.length;let rms=Math.sqrt(b.reduce((a,v)=>a+(v-mean)**2,0)/b.length);ac=Math.max(ac,rms);peak=Math.max(peak,...b.map(Math.abs));}return {ac,peak,contexts:audioContexts.map(c=>c.state),running,sound}},
+ getState(){return EJS_emulator.gameManager.getState()},
+ getFrame(){return EJS_emulator.gameManager.getFrameNum()},
+ disk(index){return campaign.disk(index)},
+ inspect(){return campaign.inspect()},
+ get running(){return running}
+};
+EJS_onGameStart=async()=>{try{
+ await sleep(300);EJS_emulator.canvas.tabIndex=-1;
+ // Use our controls; the frontend's physical key bindings must not add a second input.
+ EJS_emulator.gameManager.setKeyboardEnabled(false);
+ machine.ready=true;
+ const {createCampaignController}=await import('./campaign-machine.mjs');
+ campaign=createCampaignController(machine,ram,()=>EJS_emulator.gameManager,status);
+ const levelId=params.get('level');
+ if(levelId){
+  const response=await fetch('media/campaign.json');if(!response.ok)throw Error('Campaign catalogue unavailable');
+  const levels=(await response.json()).ratings.flatMap(r=>r.levels),level=levels.find(l=>l.id===levelId);if(!level)throw Error('Unknown original level');
+  let info;
+  if(level.checkpoint){
+   if(!/^(fun|tricky|taxing|mayhem)-\d{2}$/.test(level.id))throw Error('Invalid level identity');
+   const response=await fetch('media/levels/'+level.id+'.bin');if(!response.ok)throw Error('Original level checkpoint unavailable');
+   EJS_emulator.gameManager.toggleMainLoop(0);EJS_emulator.gameManager.loadState(new Uint8Array(await response.arrayBuffer()));EJS_emulator.gameManager.toggleMainLoop(1);running=true;await sleep(180);EJS_emulator.gameManager.toggleFastForward(0);await campaign.disk(level.disk);info=campaign.inspect();if(info.id!==level.id)throw Error('Original level checkpoint identity mismatch');
+  }else{await machine.restore('title',true);info=await campaign.launch(level)}
+  applyVolume();status('ready',{mode:'campaign',running:true,level:info});
+ }
+ else if(fullBoot){running=true;applyVolume();status('ready',{mode:'boot',running:true})}
+ else{await machine.restore(requested,autoPlay);status('ready',{mode:autoPlay?'screen':'level',name:requested,running:autoPlay})}
+}catch(e){status('error',{message:e.message})}};
+window.addEventListener('blur',()=>machine.release());
+window.addEventListener('pagehide',()=>{campaign?.close();running=false;pointerTarget=null;for(const c of audioContexts)if(c.state!=='closed')void c.close()});
+</script><script src="vendor/emulatorjs/loader.js"></script></body></html>

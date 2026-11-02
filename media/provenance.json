@@ -1,0 +1,25 @@
+{
+  "sourceArchive": "lemmings.zip",
+  "sourcePage": "https://www.c64.com/games/260",
+  "archiveSha256": "e5a386aeab2f3922bb1a56333f3cea695cf5de61f076ad491ee420da89ae99fd",
+  "disks": [
+    {
+      "originalName": "Lemmings [Side A].d64",
+      "path": "media/side-a.d64",
+      "sha256": "44912257d062e5b9f575fd2ed0b5520f4206dce8b5e79f263fa46fe2fe2c443a",
+      "bytes": 174848
+    },
+    {
+      "originalName": "Lemmings [Side B].d64",
+      "path": "media/side-b.d64",
+      "sha256": "970a3c017dbc25cdc3fd169b81483fa374bf7d3ac6e04831ee3af030d8018c16",
+      "bytes": 174848
+    },
+    {
+      "originalName": "Lemmings [Side C].d64",
+      "path": "media/side-c.d64",
+      "sha256": "cf4a77b9e8d6d0c1ca956a3d33378ae9d7fab2fdf88bb103c765d31c1e53376d",
+      "bytes": 174848
+    }
+  ]
+}
