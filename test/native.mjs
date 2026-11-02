@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import './digger-animation.mjs';
+import './native-skills.mjs';
 import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {Game} from '../native/engine.mjs';
