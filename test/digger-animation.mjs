@@ -3,7 +3,7 @@ import {readFile} from 'node:fs/promises';
 import {Game} from '../native/engine.mjs';
 import {animationFrame} from '../native/render.mjs';
 const level=JSON.parse(await readFile(new URL('../native/assets/level.json',import.meta.url),'utf8'));
-const terrain=new Uint8Array(await readFile(new URL('../native/assets/terrain.bin',import.meta.url)));
+const terrain=new Uint8Array(await readFile(new URL('../native/assets/'+level.files[0].path,import.meta.url)));
 assert.deepEqual(Array.from({length:16},(_,phase)=>animationFrame(level,{state:'dig',phase})),[84,86,88,90,92,94,96,98,84,86,88,90,92,94,96,98]);
 assert.equal(animationFrame(level,{state:'walk',dir:1,phase:3}),11);
 assert.equal(animationFrame(level,{state:'walk',dir:-1,phase:3}),3);

@@ -7,33 +7,37 @@
 [![GreenMarch native start screen — click to play online](artwork/play-online.png)](https://soulspawnz.github.io/GreenMarch/)
 
 **Every little life counts.** A native browser recreation of C64 Lemmings,
-starting with **Fun 1 — Just dig!** Original level graphics, lemming animations
-and SID music, with our own JavaScript gameplay engine.
+with **all 100 original levels** across Fun, Tricky, Taxing and Mayhem. Original
+level graphics, lemming animations and SID music, with our own JavaScript engine
+and all eight skills.
 
 The normal game runs without a C64 emulator, ROMs or disk loading. Original
 music uses a separate, audio-only 6502/SID player. No installation is required.
 
 ## Play
 
-Click **Play level one**. Select **Digger** with **8**, then click a walking
-lemming to dig through the soil. There are 10 lemmings, 10 Diggers and five
-minutes. Rescue at least one to complete the original 10% requirement.
+Choose a rating and level, then click **Load level** and **Play level**. Select
+a skill and click or tap a suitable lemming. Rescue the required number before
+time runs out. All levels are available immediately; completed levels are saved
+in your browser.
 
 Use **Speed ×4** to advance time faster. **Restart level** starts a fresh native
-simulation. This build supports the first level and its Digger skill; other
-skills and levels are not ported yet.
+simulation. **Next level** advances through the campaign. Start with Fun 1,
+**Just dig!**, to learn Digger; the next tutorials introduce the other skills.
 
 ## Controls
 
 | Input | Action |
 | --- | --- |
-| Mouse / touch | Point and click a walking lemming to assign Digger |
+| Mouse / touch | Select a skill, then click or tap a lemming |
 | Arrow keys | Move the crosshair; approach an edge to pan |
-| Space / Assign Digger | Assign at the current crosshair |
-| 8 | Select Digger |
+| Space / Assign | Assign the selected skill at the crosshair |
+| 1–8 | Climber, Floater, Bomber, Blocker, Builder, Basher, Miner, Digger |
 | P | Pause / resume |
 | F | Toggle fullscreen |
 | View buttons | Pan across the original terrain |
+| Release − / + | Adjust the release rate |
+| N / Nuke twice | End an attempt with timed explosions |
 
 Sound and volume controls operate the original SID player. Pause freezes
 gameplay and silences audio.
@@ -45,8 +49,9 @@ worker tests digger placements and learns their returns, keeping your manual
 game intact. **Replay best** plays its verified, recorded simulation-tick inputs.
 Saved attempts survive reload; **Export experience** downloads the local archive.
 
-The first native training check found and reproduced a **90% rescue**. This is
-a small placement learner, not a general solver. [Features, checks and limits](docs/NATIVE_ENGINE.md).
+Training currently supports **Fun 1**, where it finds and reproduces a **100%
+rescue**. Earlier experience remains archived. This is a small placement learner,
+not a general campaign solver. [Features, checks and limits](docs/NATIVE_ENGINE.md).
 
 ## Original C64 reference
 

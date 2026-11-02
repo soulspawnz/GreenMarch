@@ -10,6 +10,14 @@ Use installed Playwright and Chromium with explicit paths. Do not reinstall
 existing dependencies. See [development commands](../../docs/DEVELOPMENT.md).
 
 - Run `test/native.mjs` for deterministic engine, asset and audio checks.
+- Run `test/native-campaign.mjs` for all 100 configurations, binary identities,
+  inventories, animation bounds, baseline simulations and snapshots.
+- Run `test/native-tutorials.mjs` for seven complete solutions covering all eight
+  skills and their deterministic replays.
+- Run `test/native-campaign-browser.mjs` for all 100 UI starts and actual SID
+  output, split between desktop and Chromium touch profiles.
+- Run `test/native-campaign-play.mjs` for complete Floater/touch and Basher/mouse
+  tutorial playthroughs using normal interface actions.
 - Run `test/native-browser.mjs` for mouse assignment, terrain changes, original
   SID output, pause/mute, training isolation, active Stop, replay and persistence.
 - Run `test/native-mobile.mjs` for touch assignment, panning, audio, rotation,
@@ -23,8 +31,9 @@ existing dependencies. See [development commands](../../docs/DEVELOPMENT.md).
   insufficient. Verify pause and mute silence, then resumed output.
 - Retain a complete visible run, its actual result and recorded inputs. A saved
   result screen or a rescue counter alone does not prove completion.
-- Keep native and original-reference results distinct: native training reached
-  90%; reference gameplay reached 100%. Neither means every level was solved.
+- Keep native and original-reference results distinct. Native Fun 1 training
+  reaches 100%; earlier movement models remain archived. This does not establish
+  that every campaign level has been solved or that physics are frame-perfect.
 - Run `tools/verify-media.mjs` for original media and pinned dependency identities.
 
 ## Reference version

@@ -24,7 +24,7 @@ async function play(spec){
   await press('#play');
   await page.waitForFunction(x=>greenmarch.game.actors.some(a=>a.id===0&&a.state==='walk'&&a.x>=x),spec.x,{polling:'raf',timeout:20000});
   await press('#pause');await page.locator('#game').scrollIntoViewIfNeeded();
-  const before=await page.evaluate(()=>{const a=greenmarch.game.actors.find(a=>a.id===0),b=document.querySelector('#game').getBoundingClientRect();return {actor:{...a},skills:[...greenmarch.game.skills],x:b.x+(a.x-greenmarch.renderer.camera)/160*b.width,y:b.y+(a.y-5)/168*b.height}});
+  const before=await page.evaluate(()=>{const a=greenmarch.game.actors.find(a=>a.id===0),b=document.querySelector('#game').getBoundingClientRect();return {actor:{...a},skills:[...greenmarch.game.skills],x:b.x+(a.x-greenmarch.renderer.camera)/160*b.width,y:b.y+(a.y-5)/greenmarch.game.level.height*b.height}});
   assert.equal(before.actor.state,'walk');
   await press('#pause');
   if(mobile)await page.touchscreen.tap(before.x,before.y);

@@ -3,20 +3,22 @@
 ## Native runtime
 
 Run `npm start` with Node.js 18 or newer and open localhost:8768. No package
-installation is needed. `index.html` and `native.html` run the native first level.
+installation is needed. `index.html` and `native.html` run the native campaign.
 
 - `native/engine.mjs`: deterministic JavaScript gameplay and snapshots.
 - `native/render.mjs`: canvas renderer for the original graphics.
 - `native/sid-player.mjs`, `sid-cpu.mjs`, `sid-worklet.mjs`: original audio only.
 - `native/learning-*`: isolated simulation training and exact tick-input replay.
 - `native/main.mjs`: controls, transport, audio and local experience archive.
-- `native/assets/level.json`: level configuration and asset identities.
+- `native/campaign.mjs`: verified static asset loading and campaign catalogue.
+- `native/assets/campaign.json`: all 100 native level configurations and identities.
 
 Read [NATIVE_ENGINE.md](NATIVE_ENGINE.md) for supported features, validation and fidelity
-limits. The initial recreation supports Fun 1 and Digger, not all 100 levels.
+limits. All 100 layouts and eight skills are included; physics are not frame-perfect.
 
 ```sh
 npm run test:native
+npm run test:campaign
 npm run verify:media
 ```
 
@@ -25,6 +27,18 @@ checks original SID PCM, mouse digging, pause/mute, native training/Stop, manual
 state preservation, complete input replay, storage and mobile layout. It rejects
 full C64 emulator/ROM/disk requests. Browser tools are installed separately;
 tests take their explicit paths and keep runtime captures private.
+
+`test/native-campaign-browser.mjs PLAYWRIGHT_ENTRY CHROMIUM_EXE PRIVATE_OUTPUT_DIR [URL]`
+starts every native level through the campaign UI, checks actors, actual SID
+output, desktop/touch layout and the absence of full C64 runtime requests.
+`test/native-tutorials.mjs` completes the first seven tutorials using feedback
+policies and verifies their input replays. Starting every level is distinct from
+solving every puzzle.
+
+`test/native-campaign-play.mjs PLAYWRIGHT_ENTRY CHROMIUM_EXE PRIVATE_OUTPUT_DIR [URL]`
+completes the Floater tutorial by touch and the Basher tutorial by mouse using
+only normal skill buttons, panning and canvas input. It observes gameplay to
+choose actions; it does not edit the simulation or its result.
 
 `test/native-mobile.mjs PLAYWRIGHT_ENTRY CHROMIUM_EXE PRIVATE_OUTPUT_DIR [URL]`
 tests the deployed game with real touch events in two Chromium mobile profiles

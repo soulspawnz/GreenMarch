@@ -3,8 +3,8 @@
   "files": [
     {
       "path": "native/assets/level.json",
-      "bytes": 28494,
-      "sha256": "9b4cba16d0ba04b5036c806df40b3bdddcc2c0d1566bcde5a07c50f0117e6c85"
+      "bytes": 11698,
+      "sha256": "38de4b832ac4eef4e2e2e309ab78fa4fc7c8e7782ae337f98a57e9534286ab3c"
     },
     {
       "path": "vendor/jssid/resid.mjs",
@@ -20,6 +20,11 @@
       "path": "vendor/jssid/UPSTREAM.json",
       "bytes": 1495,
       "sha256": "efcedfcfb2a2c4d753e627f467f20f7d7dbf986190d7a0c2cbe409c0f758ff57"
+    },
+    {
+      "path": "native/assets/campaign.json",
+      "bytes": 30376,
+      "sha256": "3a1a8a116c5e6f660133504335ffb091c6dc7bd764ead2e17d04bb88b886d747"
     }
   ]
 }

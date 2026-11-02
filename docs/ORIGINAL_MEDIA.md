@@ -13,7 +13,7 @@ See [the campaign documentation](CAMPAIGN.md).
 
 ## Graphics and sound
 
-The native first level uses original terrain, lemming animations, entrance, exit
+The native campaign uses original terrain, lemming animations, entrance, exit
 and SID music. [Features and limits](NATIVE_ENGINE.md) describes the current
 engine and its supported content.
 

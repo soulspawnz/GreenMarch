@@ -25,4 +25,13 @@ const native=JSON.parse(await readFile(path.join(root,'native/assets/level.json'
 for(const f of native.files){const bytes=await readFile(path.join(root,'native/assets',f.path));assert.equal(bytes.length,f.bytes);assert.equal(sha(bytes),f.sha256,f.path)}
 const nativeManifest=JSON.parse(await readFile(path.join(root,'native/provenance.json'),'utf8'));
 for(const f of nativeManifest.files)assert.equal(sha(await readFile(path.join(root,f.path))),f.sha256,f.path);
-console.log(`[OK] Native first-level assets, metadata and standalone SID source identities verified.`);
+const nativeCampaign=JSON.parse(await readFile(path.join(root,'native/assets/campaign.json'),'utf8'));
+const nativeEntries=nativeCampaign.ratings.flatMap(r=>r.levels);
+assert.equal(nativeEntries.length,100);assert.equal(new Set(nativeEntries.map(l=>l.id)).size,100);
+for(const entry of nativeEntries){
+ const configPath=path.resolve(root,'native/assets',entry.path),bytes=await readFile(configPath);
+ assert.equal(bytes.length,entry.bytes);assert.equal(sha(bytes),entry.sha256,entry.id);
+ const config=JSON.parse(bytes);assert.equal(config.id,entry.id);
+ for(const f of config.files){const data=await readFile(path.resolve(path.dirname(configPath),f.path));assert.equal(data.length,f.bytes);assert.equal(sha(data),f.sha256,entry.id+':'+f.path)}
+}
+console.log(`[OK] All 100 native configurations, assets and standalone SID source identities verified.`);

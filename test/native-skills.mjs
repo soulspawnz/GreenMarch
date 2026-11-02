@@ -7,6 +7,11 @@ function fixture({floor=80,width=80,height=120}={}){
  const game=new Game(level,terrain);game.entranceClosed=true;game.spawned=1;game.actors=[{id:0,x:30,y:floor,dir:1,state:'walk',phase:0,fallTicks:0}];return game;
 }
 const advance=(game,ticks)=>{for(let i=0;i<ticks;i++)game.step()};
+{
+ const game=fixture(),first=game.actors[0];game.actors.push({...first,id:1});
+ assert(game.assign(0,1));assert.equal(game.pick(first.x,first.y-5,1).id,1,'Crowd targeting skips an actor that already has the selected permanent skill');
+ assert.equal(game.skills[1],2,'Target eligibility must not consume inventory');
+}
 const attr=(game,x,y,value)=>{const col=Math.floor(x/4),index=Math.floor(y/8)*20+Math.floor(col/4),shift=6-(col%4)*2;game.level.attributes[index]=(game.level.attributes[index]&~(3<<shift))|(value<<shift)};
 
 {

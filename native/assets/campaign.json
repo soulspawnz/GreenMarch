@@ -1,0 +1,925 @@
+{
+  "version": 1,
+  "ratings": [
+    {
+      "name": "Fun",
+      "levels": [
+        {
+          "id": "fun-01",
+          "title": "Just dig!",
+          "rating": "Fun",
+          "number": 1,
+          "path": "level.json",
+          "bytes": 11698,
+          "sha256": "38de4b832ac4eef4e2e2e309ab78fa4fc7c8e7782ae337f98a57e9534286ab3c"
+        },
+        {
+          "id": "fun-02",
+          "title": "Only floaters can survive this",
+          "rating": "Fun",
+          "number": 2,
+          "path": "levels/fun-02.json",
+          "bytes": 12581,
+          "sha256": "05f9663c14458db7bdb0839717136056bb389959a6c490f08c5f8ebfbdb1e1a6"
+        },
+        {
+          "id": "fun-03",
+          "title": "Tailor made for Blockers",
+          "rating": "Fun",
+          "number": 3,
+          "path": "levels/fun-03.json",
+          "bytes": 12216,
+          "sha256": "ce1e2ebcbdb5c937f2d70c528e293781319287279ad9047d78c3daa6a490e593"
+        },
+        {
+          "id": "fun-04",
+          "title": "Now use Miners and Climbers",
+          "rating": "Fun",
+          "number": 4,
+          "path": "levels/fun-04.json",
+          "bytes": 13878,
+          "sha256": "8d0a75e62fbd5c10cea328381e21e7109cf368c8bcaf69baa515753b08e9a7d2"
+        },
+        {
+          "id": "fun-05",
+          "title": "You need bashers this time",
+          "rating": "Fun",
+          "number": 5,
+          "path": "levels/fun-05.json",
+          "bytes": 13530,
+          "sha256": "2492705f72b8d28971a4726842285737f385d1c06b01078179e3e1fb220f4aeb"
+        },
+        {
+          "id": "fun-06",
+          "title": "A job for Blockers and Bombers",
+          "rating": "Fun",
+          "number": 6,
+          "path": "levels/fun-06.json",
+          "bytes": 18410,
+          "sha256": "36c31cb7753012203007d9c6c14968954910cb6f4ba7c0371890134dac132661"
+        },
+        {
+          "id": "fun-07",
+          "title": "Builders will help you here",
+          "rating": "Fun",
+          "number": 7,
+          "path": "levels/fun-07.json",
+          "bytes": 11746,
+          "sha256": "4bce532a6c1cce9259847c6bfa43f97031d1861609603bdd4fa7ec1f7c6bc9ad"
+        },
+        {
+          "id": "fun-08",
+          "title": "Not as complicated as it looks",
+          "rating": "Fun",
+          "number": 8,
+          "path": "levels/fun-08.json",
+          "bytes": 14648,
+          "sha256": "1bb1be224d2a45509759461643ec3e6615308c7542a3f1e7bcee06a2cf00f89c"
+        },
+        {
+          "id": "fun-09",
+          "title": "As long as you try your best",
+          "rating": "Fun",
+          "number": 9,
+          "path": "levels/fun-09.json",
+          "bytes": 17506,
+          "sha256": "5a0a8cbb4b24d9dadecc528ed6eb8aaf9ab2db4dd3eb75bf2d29ae67da5deaf3"
+        },
+        {
+          "id": "fun-10",
+          "title": "Smile if you love Lemmings",
+          "rating": "Fun",
+          "number": 10,
+          "path": "levels/fun-10.json",
+          "bytes": 14906,
+          "sha256": "a0523ef6cb6a45ee53f4da8d224517a66b2dd6e08032dfe603894e43f4c24182"
+        },
+        {
+          "id": "fun-11",
+          "title": "Keep your hair on Mr. Lemming",
+          "rating": "Fun",
+          "number": 11,
+          "path": "levels/fun-11.json",
+          "bytes": 12646,
+          "sha256": "f6f530184f88798521735b1da2971984ac4d2254f27226dcecc44cfbfb93f107"
+        },
+        {
+          "id": "fun-12",
+          "title": "Patience",
+          "rating": "Fun",
+          "number": 12,
+          "path": "levels/fun-12.json",
+          "bytes": 13003,
+          "sha256": "70314982c11474866a4a76e29f8c933b55c04cef8922408c5a7660720427e101"
+        },
+        {
+          "id": "fun-13",
+          "title": "We all fall down",
+          "rating": "Fun",
+          "number": 13,
+          "path": "levels/fun-13.json",
+          "bytes": 17069,
+          "sha256": "7d25c65ca3cb6b587b51e53855d82f94732cea7c4054c163d68381e68f5a35ea"
+        },
+        {
+          "id": "fun-14",
+          "title": "Origins and Lemmings",
+          "rating": "Fun",
+          "number": 14,
+          "path": "levels/fun-14.json",
+          "bytes": 14626,
+          "sha256": "2194832ed3ee3d2e1b4060589348176cc371bb4a5a8b75b0cbaac241453c6dfb"
+        },
+        {
+          "id": "fun-15",
+          "title": "Don't let your eyes deceive ya",
+          "rating": "Fun",
+          "number": 15,
+          "path": "levels/fun-15.json",
+          "bytes": 14554,
+          "sha256": "3140bc70136d6af10f12bfbbdeae89797fb5b1177d649f57c65e5fe4417334d6"
+        },
+        {
+          "id": "fun-16",
+          "title": "Don't do anything too hasty",
+          "rating": "Fun",
+          "number": 16,
+          "path": "levels/fun-16.json",
+          "bytes": 24053,
+          "sha256": "e5f3b0551ff9d8fcf7b57804644833c537858130844c21f2335e03e63264f298"
+        },
+        {
+          "id": "fun-17",
+          "title": "Let's block 'n' blow",
+          "rating": "Fun",
+          "number": 17,
+          "path": "levels/fun-17.json",
+          "bytes": 14762,
+          "sha256": "4c051c4e2c7665e145e9ff5f47563c8ca2471828e264fbe123591a01e34ccd13"
+        },
+        {
+          "id": "fun-18",
+          "title": "You Live and Lem",
+          "rating": "Fun",
+          "number": 18,
+          "path": "levels/fun-18.json",
+          "bytes": 11739,
+          "sha256": "69bcabfcc4aa3e3f52ed28b3a44cd693151caccd66546deb03667a4fecd61e00"
+        },
+        {
+          "id": "fun-19",
+          "title": "A Beast of a level",
+          "rating": "Fun",
+          "number": 19,
+          "path": "levels/fun-19.json",
+          "bytes": 11737,
+          "sha256": "981acc7db0684009dc68507a4602ef0779f1d88093a95ef5caca6dc7af97814a"
+        },
+        {
+          "id": "fun-20",
+          "title": "Konbanwa Lemming San",
+          "rating": "Fun",
+          "number": 20,
+          "path": "levels/fun-20.json",
+          "bytes": 12450,
+          "sha256": "86e352e1aa949201b56e9c5e2255959bfc3df27283b4a5805373016ad9114282"
+        },
+        {
+          "id": "fun-21",
+          "title": "Lemmings Lemmings everywhere",
+          "rating": "Fun",
+          "number": 21,
+          "path": "levels/fun-21.json",
+          "bytes": 12924,
+          "sha256": "484cdb8b9f8fe914ced43abcc3fb275f2c7c71da8b2ed57c7cf004f17a7af4df"
+        },
+        {
+          "id": "fun-22",
+          "title": "Let's be careful out there",
+          "rating": "Fun",
+          "number": 22,
+          "path": "levels/fun-22.json",
+          "bytes": 12404,
+          "sha256": "dffdadc57cc86948146620385af04054740c4123a56761e3644e1b5cc83e12e7"
+        },
+        {
+          "id": "fun-23",
+          "title": "If only they could fly",
+          "rating": "Fun",
+          "number": 23,
+          "path": "levels/fun-23.json",
+          "bytes": 20030,
+          "sha256": "ae3100647531f7819c4e2b1cc392d21f5c31549867c5c6d410d908bc538321ed"
+        },
+        {
+          "id": "fun-24",
+          "title": "Worra lorra lemmingfly",
+          "rating": "Fun",
+          "number": 24,
+          "path": "levels/fun-24.json",
+          "bytes": 12772,
+          "sha256": "f2b02fd804ec682b01e75f4edf57a990324ce0bfbd02f8cabab7f46e3e2de77e"
+        },
+        {
+          "id": "fun-25",
+          "title": "Lock up your Lemmings",
+          "rating": "Fun",
+          "number": 25,
+          "path": "levels/fun-25.json",
+          "bytes": 17053,
+          "sha256": "4c0fe8472b72d415125665cc0237bca883f8398aa741f4ca52dad09f032d143e"
+        }
+      ]
+    },
+    {
+      "name": "Tricky",
+      "levels": [
+        {
+          "id": "tricky-01",
+          "title": "This should be a doddle!",
+          "rating": "Tricky",
+          "number": 1,
+          "path": "levels/tricky-01.json",
+          "bytes": 11133,
+          "sha256": "c9ace0a41e67e3ccb5bc6d22af48d8167dae28f62a05b52029c71fd09e253cc6"
+        },
+        {
+          "id": "tricky-02",
+          "title": "We all fall down",
+          "rating": "Tricky",
+          "number": 2,
+          "path": "levels/tricky-02.json",
+          "bytes": 17074,
+          "sha256": "63ba735501feb9effbacb8b677ebc2d4d0f18825246522f1a7fadaf5aea33a4c"
+        },
+        {
+          "id": "tricky-03",
+          "title": "Here's one I prepared earlier",
+          "rating": "Tricky",
+          "number": 3,
+          "path": "levels/tricky-03.json",
+          "bytes": 12758,
+          "sha256": "4d5aa17ca144a19db0339e9873b25816a39d84aee991386f0a3659672fe7331e"
+        },
+        {
+          "id": "tricky-04",
+          "title": "Careless clicking costs lives",
+          "rating": "Tricky",
+          "number": 4,
+          "path": "levels/tricky-04.json",
+          "bytes": 14330,
+          "sha256": "072dc2de69e8d4dbee343c37d3f0ef3c868d749bbc1759430b5a4c643c77389c"
+        },
+        {
+          "id": "tricky-05",
+          "title": "Lemmingology",
+          "rating": "Tricky",
+          "number": 5,
+          "path": "levels/tricky-05.json",
+          "bytes": 14248,
+          "sha256": "d71406bd52fc6347417857babb99148b468ef9e73e0513d383eb0c6fe2fa8999"
+        },
+        {
+          "id": "tricky-06",
+          "title": "Been there, seen it, done it",
+          "rating": "Tricky",
+          "number": 6,
+          "path": "levels/tricky-06.json",
+          "bytes": 13460,
+          "sha256": "015f4eb6d6ebb4296164809df0cd181ed130728b8e889942abd955ab476220e3"
+        },
+        {
+          "id": "tricky-07",
+          "title": "Lemming sanctuary in sight",
+          "rating": "Tricky",
+          "number": 7,
+          "path": "levels/tricky-07.json",
+          "bytes": 16088,
+          "sha256": "1ef12aada2452d84134c955d1da1acdaa2fe91b01f359a4fb0cc252e5439d99b"
+        },
+        {
+          "id": "tricky-08",
+          "title": "There's a lot of them about",
+          "rating": "Tricky",
+          "number": 8,
+          "path": "levels/tricky-08.json",
+          "bytes": 23068,
+          "sha256": "02ad44fe7822730f1799fc20ae8f68e81b7a536a4e1e592c278d8f7c73f09cd7"
+        },
+        {
+          "id": "tricky-09",
+          "title": "Lemmings in the attic",
+          "rating": "Tricky",
+          "number": 9,
+          "path": "levels/tricky-09.json",
+          "bytes": 13410,
+          "sha256": "2c07456ae967b86ab9c789dc386b2bc8fe994ff18591e69f135830f9830eada7"
+        },
+        {
+          "id": "tricky-10",
+          "title": "Bitter Lemming",
+          "rating": "Tricky",
+          "number": 10,
+          "path": "levels/tricky-10.json",
+          "bytes": 11847,
+          "sha256": "3057def78e0c9f6d5eda85fc81c493d8b0c67a5e9322042b9bbe11889dfbd8a4"
+        },
+        {
+          "id": "tricky-11",
+          "title": "MENACING !!",
+          "rating": "Tricky",
+          "number": 11,
+          "path": "levels/tricky-11.json",
+          "bytes": 12086,
+          "sha256": "880c1a7a66c1461aecf64f58bdf59dbcd0aee9f5a3e46b43e1647a063946ca07"
+        },
+        {
+          "id": "tricky-12",
+          "title": "Ozone friendly Lemmings",
+          "rating": "Tricky",
+          "number": 12,
+          "path": "levels/tricky-12.json",
+          "bytes": 11727,
+          "sha256": "7c448ace0ca71a4947b31e039410a0aa0918a8191dc69b9c0bdf4b6ae16b8ed2"
+        },
+        {
+          "id": "tricky-13",
+          "title": "We are now at LEMCON ONE",
+          "rating": "Tricky",
+          "number": 13,
+          "path": "levels/tricky-13.json",
+          "bytes": 17507,
+          "sha256": "6245fde79af1e83c0654a78d1d033116e5fe6861285111a1559f4d11087227ad"
+        },
+        {
+          "id": "tricky-14",
+          "title": "Luvly Jubly",
+          "rating": "Tricky",
+          "number": 14,
+          "path": "levels/tricky-14.json",
+          "bytes": 13521,
+          "sha256": "209ce0e782cb022c8d2769ee68637f94bb8f0e8137155dfdb6985e67a6daef8b"
+        },
+        {
+          "id": "tricky-15",
+          "title": "Diet Lemmingaid",
+          "rating": "Tricky",
+          "number": 15,
+          "path": "levels/tricky-15.json",
+          "bytes": 18403,
+          "sha256": "19d5af049a571801e32e313518fa5ab905f561763c04a18df1291d485d6887d8"
+        },
+        {
+          "id": "tricky-16",
+          "title": "Postcard from Lemmingland",
+          "rating": "Tricky",
+          "number": 16,
+          "path": "levels/tricky-16.json",
+          "bytes": 11753,
+          "sha256": "94a2199cc86b5e6f927555f6f1acaec4e1d45ca0b1296da4f0af0773ef1e9d86"
+        },
+        {
+          "id": "tricky-17",
+          "title": "One way digging to freedom",
+          "rating": "Tricky",
+          "number": 17,
+          "path": "levels/tricky-17.json",
+          "bytes": 14276,
+          "sha256": "aed5813f59f04098f2b5fab21d53aec385a15f607a9d23549bb766e4ee40f600"
+        },
+        {
+          "id": "tricky-18",
+          "title": "All the 6's",
+          "rating": "Tricky",
+          "number": 18,
+          "path": "levels/tricky-18.json",
+          "bytes": 14548,
+          "sha256": "eea643475382a6f844488e3dfec63cf2276fb5f484ea65b5d3cc8b290866d34d"
+        },
+        {
+          "id": "tricky-19",
+          "title": "Turn around young Lemmings!",
+          "rating": "Tricky",
+          "number": 19,
+          "path": "levels/tricky-19.json",
+          "bytes": 14646,
+          "sha256": "135a158c51327ec55f7e34c1a505cb41a4cc6144db0c9e6ccace7f4c1db7111e"
+        },
+        {
+          "id": "tricky-20",
+          "title": "From The Boundary Line",
+          "rating": "Tricky",
+          "number": 20,
+          "path": "levels/tricky-20.json",
+          "bytes": 13017,
+          "sha256": "77ba57c8c8ff799b2e6702d9264f1427f7753cd401624d72d39706b75f8519d6"
+        },
+        {
+          "id": "tricky-21",
+          "title": "Tightrope City",
+          "rating": "Tricky",
+          "number": 21,
+          "path": "levels/tricky-21.json",
+          "bytes": 12160,
+          "sha256": "d7f73f56caf2ebd1be0421d771570a085ed3edc56af3082360fbd4a8dcee15d2"
+        },
+        {
+          "id": "tricky-22",
+          "title": "I have a cunning plan",
+          "rating": "Tricky",
+          "number": 22,
+          "path": "levels/tricky-22.json",
+          "bytes": 17501,
+          "sha256": "5fb6aeb31b1995b82335e1c0e3351715a955ae5dc548267030c6340cb49ad5b0"
+        },
+        {
+          "id": "tricky-23",
+          "title": "Island of the Wicker people",
+          "rating": "Tricky",
+          "number": 23,
+          "path": "levels/tricky-23.json",
+          "bytes": 11357,
+          "sha256": "fd8b8e9a95b422eb48df0796f002c817037e79002b7fcce4a262bc9b8c03cc71"
+        },
+        {
+          "id": "tricky-24",
+          "title": "Rainbow Island",
+          "rating": "Tricky",
+          "number": 24,
+          "path": "levels/tricky-24.json",
+          "bytes": 18383,
+          "sha256": "c820ed72660adc5f0435ef478d6ac6f7fb5222021a56317517f5c2ec76ff4f3e"
+        },
+        {
+          "id": "tricky-25",
+          "title": "The Crankshaft",
+          "rating": "Tricky",
+          "number": 25,
+          "path": "levels/tricky-25.json",
+          "bytes": 14625,
+          "sha256": "1a1c7282fac1c7783708e218f03de0679067c6f04440d0fb88b3c010ebb86b4b"
+        }
+      ]
+    },
+    {
+      "name": "Taxing",
+      "levels": [
+        {
+          "id": "taxing-01",
+          "title": "If at first you don't succeed",
+          "rating": "Taxing",
+          "number": 1,
+          "path": "levels/taxing-01.json",
+          "bytes": 14550,
+          "sha256": "5971be4845184053a64ff1f38275516972343ba4fce99d20ea2439269b06c1a4"
+        },
+        {
+          "id": "taxing-02",
+          "title": "Heaven can wait (we hope!!!!)",
+          "rating": "Taxing",
+          "number": 2,
+          "path": "levels/taxing-02.json",
+          "bytes": 16350,
+          "sha256": "0371f353334bc1c6762066fac1e282edb7b6fa7df142b3723aa11f54dc6c45e5"
+        },
+        {
+          "id": "taxing-03",
+          "title": "Lend a helping hand....",
+          "rating": "Taxing",
+          "number": 3,
+          "path": "levels/taxing-03.json",
+          "bytes": 22071,
+          "sha256": "30ee568ec257bef26f4f47ac6e46c6b5070c6c0454c9c0a374f20a1f8ba021bb"
+        },
+        {
+          "id": "taxing-04",
+          "title": "The Prison!",
+          "rating": "Taxing",
+          "number": 4,
+          "path": "levels/taxing-04.json",
+          "bytes": 24038,
+          "sha256": "bf63b736341e031f83c7b7b9d41b567fe96058cc5e67647339260c462ce6f7b4"
+        },
+        {
+          "id": "taxing-05",
+          "title": "They just keep on coming",
+          "rating": "Taxing",
+          "number": 5,
+          "path": "levels/taxing-05.json",
+          "bytes": 11934,
+          "sha256": "785e42bf834a8fd8b5aba2a5936a902f3ce70cd0e5ddcdf8fcf8dd8bc80ce5fb"
+        },
+        {
+          "id": "taxing-06",
+          "title": "Every Lemming for himself!!!",
+          "rating": "Taxing",
+          "number": 6,
+          "path": "levels/taxing-06.json",
+          "bytes": 12750,
+          "sha256": "071e50630b34d0fa9723948bcd74487f3b3ad82a8f70874543a907f9f2376dab"
+        },
+        {
+          "id": "taxing-07",
+          "title": "The Art Gallery",
+          "rating": "Taxing",
+          "number": 7,
+          "path": "levels/taxing-07.json",
+          "bytes": 14315,
+          "sha256": "f32602f681786c717cccabb8ad266282916ea44493d6a54949ecc5d290d533cf"
+        },
+        {
+          "id": "taxing-08",
+          "title": "Perseverance",
+          "rating": "Taxing",
+          "number": 8,
+          "path": "levels/taxing-08.json",
+          "bytes": 14890,
+          "sha256": "bfbb79f84cc97bd5fd0baaa80f0ac50c5949e4a50dc957916b84f98000756ea8"
+        },
+        {
+          "id": "taxing-09",
+          "title": "Izzie Wizzie lemmings get busy",
+          "rating": "Taxing",
+          "number": 9,
+          "path": "levels/taxing-09.json",
+          "bytes": 14260,
+          "sha256": "9104ff9c8c6afe22f1bae7cb0307bde27862a02bb52311dccf688b56c4ef175e"
+        },
+        {
+          "id": "taxing-10",
+          "title": "The ascending pillar scenario",
+          "rating": "Taxing",
+          "number": 10,
+          "path": "levels/taxing-10.json",
+          "bytes": 13456,
+          "sha256": "5e1e3067298fb8bf71a583d23a18177348f7d32a9872d19d09f75caf95c49b61"
+        },
+        {
+          "id": "taxing-11",
+          "title": "Nightmare on Lem street",
+          "rating": "Taxing",
+          "number": 11,
+          "path": "levels/taxing-11.json",
+          "bytes": 12158,
+          "sha256": "12259aa7c7bfc5eb5bc6ddbb3d3130c534eb8a268bff8baea55b9b80e6b77e7a"
+        },
+        {
+          "id": "taxing-12",
+          "title": "Livin' On The Edge",
+          "rating": "Taxing",
+          "number": 12,
+          "path": "levels/taxing-12.json",
+          "bytes": 18863,
+          "sha256": "cff1b2ec05b35080a71497406be3d5b577a300ddd8ce51fce581e7b2ca55728d"
+        },
+        {
+          "id": "taxing-13",
+          "title": "Upsidedown World",
+          "rating": "Taxing",
+          "number": 13,
+          "path": "levels/taxing-13.json",
+          "bytes": 11821,
+          "sha256": "e03a25bf7f9751ea8b289d2e0ffb482cc7952cef4dfe7df6ed43ceea060e3c37"
+        },
+        {
+          "id": "taxing-14",
+          "title": "What an AWESOME level",
+          "rating": "Taxing",
+          "number": 14,
+          "path": "levels/taxing-14.json",
+          "bytes": 11173,
+          "sha256": "ab4664f08a154f2244c74af8650492aa0da82f93f5a365f5f376846c5863b4cf"
+        },
+        {
+          "id": "taxing-15",
+          "title": "Mary Poppins' land",
+          "rating": "Taxing",
+          "number": 15,
+          "path": "levels/taxing-15.json",
+          "bytes": 14317,
+          "sha256": "77cf2c80101883be1a707dd93c6f22a2b4fc1a75f62930eb75ee469afc3414cb"
+        },
+        {
+          "id": "taxing-16",
+          "title": "It's Lemmingentry Watson",
+          "rating": "Taxing",
+          "number": 16,
+          "path": "levels/taxing-16.json",
+          "bytes": 12581,
+          "sha256": "b2e2c97b1f61b9807c93ca24df4cbe186e140c1cf15f6a39dc7c6385bb5675a6"
+        },
+        {
+          "id": "taxing-17",
+          "title": "Tribute to M.C. Escher",
+          "rating": "Taxing",
+          "number": 17,
+          "path": "levels/taxing-17.json",
+          "bytes": 12639,
+          "sha256": "c73fa44672e57dcd5892c972998ca9c10b711248bab9736a9ee0895a686e3f10"
+        },
+        {
+          "id": "taxing-18",
+          "title": "Walk the web rope",
+          "rating": "Taxing",
+          "number": 18,
+          "path": "levels/taxing-18.json",
+          "bytes": 13034,
+          "sha256": "5396622fb9f585a8407417ab699ff836e8943b31b2cfb07898e89bbbabc3e4c5"
+        },
+        {
+          "id": "taxing-19",
+          "title": "Feel the heat!",
+          "rating": "Taxing",
+          "number": 19,
+          "path": "levels/taxing-19.json",
+          "bytes": 19645,
+          "sha256": "144e474abc11f04418dc27b58fd302010cc1c5dc302c9533378280ce952c5432"
+        },
+        {
+          "id": "taxing-20",
+          "title": "Come on over to my place",
+          "rating": "Taxing",
+          "number": 20,
+          "path": "levels/taxing-20.json",
+          "bytes": 12402,
+          "sha256": "74f5cdd1a6c860dd74049ebd1ba3fc9125e6389ec48d71a8997dfaac6a7aed11"
+        },
+        {
+          "id": "taxing-21",
+          "title": "King of the castle",
+          "rating": "Taxing",
+          "number": 21,
+          "path": "levels/taxing-21.json",
+          "bytes": 16079,
+          "sha256": "573e7ca4e0d7f22f86c6839a9e3ed6db24a9f5166e896818b46d78a5e9446b31"
+        },
+        {
+          "id": "taxing-22",
+          "title": "Cascade",
+          "rating": "Taxing",
+          "number": 22,
+          "path": "levels/taxing-22.json",
+          "bytes": 15717,
+          "sha256": "0647304fe933396c3d0d6cbf796a08a55230f7519dbfc195a0da871e11534460"
+        },
+        {
+          "id": "taxing-23",
+          "title": "Call in the bomb squad",
+          "rating": "Taxing",
+          "number": 23,
+          "path": "levels/taxing-23.json",
+          "bytes": 14709,
+          "sha256": "ff2390b2ebed1a8e233c2a6fd34f0e45df0524aaf55b70200785ec7eb308fbf5"
+        },
+        {
+          "id": "taxing-24",
+          "title": "POOR WEE CREATURES!",
+          "rating": "Taxing",
+          "number": 24,
+          "path": "levels/taxing-24.json",
+          "bytes": 14065,
+          "sha256": "30145021c2b8de7d75d59c3fc7d7a75139cfdd54e07a874467309de8e0426b8f"
+        },
+        {
+          "id": "taxing-25",
+          "title": "We all fall down",
+          "rating": "Taxing",
+          "number": 25,
+          "path": "levels/taxing-25.json",
+          "bytes": 17075,
+          "sha256": "ca377312e2744855eb26379776fbfd8482863243bbc57cf017bb2773beda036a"
+        }
+      ]
+    },
+    {
+      "name": "Mayhem",
+      "levels": [
+        {
+          "id": "mayhem-01",
+          "title": "Steel works",
+          "rating": "Mayhem",
+          "number": 1,
+          "path": "levels/mayhem-01.json",
+          "bytes": 12227,
+          "sha256": "df4c50948c3c14de2f4bdcd79ea8bc5481f3a27b105c250de66f5f6fcdf25c57"
+        },
+        {
+          "id": "mayhem-02",
+          "title": "It's hero time!",
+          "rating": "Mayhem",
+          "number": 2,
+          "path": "levels/mayhem-02.json",
+          "bytes": 12560,
+          "sha256": "d9a38b482a213396a62afb25d243c2283b4a9dd4a79a5652efe2de0be33b57bb"
+        },
+        {
+          "id": "mayhem-03",
+          "title": "The Crossroads",
+          "rating": "Mayhem",
+          "number": 3,
+          "path": "levels/mayhem-03.json",
+          "bytes": 12910,
+          "sha256": "27a59c95c754bb66b2da6ddfe42c81d33ca87fcad50cfbe0cad89e74e36f2c24"
+        },
+        {
+          "id": "mayhem-04",
+          "title": "Down, along, up. In that order",
+          "rating": "Mayhem",
+          "number": 4,
+          "path": "levels/mayhem-04.json",
+          "bytes": 20037,
+          "sha256": "86c553f17b876ac438ffebb18287dc3ea0efb97bad3f89325be9462b9002ef8d"
+        },
+        {
+          "id": "mayhem-05",
+          "title": "One way or another",
+          "rating": "Mayhem",
+          "number": 5,
+          "path": "levels/mayhem-05.json",
+          "bytes": 11923,
+          "sha256": "a87016c3813f16364384229d2b40b282fa2be9705b80453f973a8096d5184b72"
+        },
+        {
+          "id": "mayhem-06",
+          "title": "Poles Apart",
+          "rating": "Mayhem",
+          "number": 6,
+          "path": "levels/mayhem-06.json",
+          "bytes": 17487,
+          "sha256": "79f72ac32790f49ceb24690e2fd4574728c8fbea7cf7276f22968f91048da1f7"
+        },
+        {
+          "id": "mayhem-07",
+          "title": "Last one out is a rotten egg!",
+          "rating": "Mayhem",
+          "number": 7,
+          "path": "levels/mayhem-07.json",
+          "bytes": 16357,
+          "sha256": "1bb4c92692232caf72f262be10a396f08871dcc3eaac18aa6999bff3a864dbb8"
+        },
+        {
+          "id": "mayhem-08",
+          "title": "Curse of the Pharaohs",
+          "rating": "Mayhem",
+          "number": 8,
+          "path": "levels/mayhem-08.json",
+          "bytes": 12770,
+          "sha256": "90d7c4f0e633e2a350aa53baeceb5f03e8793a4148d087480542454791aaa792"
+        },
+        {
+          "id": "mayhem-09",
+          "title": "Pillars of Hercules",
+          "rating": "Mayhem",
+          "number": 9,
+          "path": "levels/mayhem-09.json",
+          "bytes": 17016,
+          "sha256": "eae7a885f23d2d4eca6499ad556e52d2b8d328e2df33332c409d974c311aab54"
+        },
+        {
+          "id": "mayhem-10",
+          "title": "We all fall down",
+          "rating": "Mayhem",
+          "number": 10,
+          "path": "levels/mayhem-10.json",
+          "bytes": 17075,
+          "sha256": "093ada8b719d678685b79ba7f9f1ef3a8a753f5cde31df5d3df24da492d1a231"
+        },
+        {
+          "id": "mayhem-11",
+          "title": "Bomboozal",
+          "rating": "Mayhem",
+          "number": 11,
+          "path": "levels/mayhem-11.json",
+          "bytes": 14756,
+          "sha256": "7ef515a7f64ae510178bc9157d70840b67f115969659362569a07ea9c70492a7"
+        },
+        {
+          "id": "mayhem-12",
+          "title": "The Far Side",
+          "rating": "Mayhem",
+          "number": 12,
+          "path": "levels/mayhem-12.json",
+          "bytes": 11616,
+          "sha256": "36712085fd0f3897f62eae8510071b25a1d0211003b4ecc543b64822473ca492"
+        },
+        {
+          "id": "mayhem-13",
+          "title": "The Great Lemming Caper",
+          "rating": "Mayhem",
+          "number": 13,
+          "path": "levels/mayhem-13.json",
+          "bytes": 12162,
+          "sha256": "c1f8e68da83d9071ef38fb5e94adba36f908d86c40256d99c3b55c45e876d343"
+        },
+        {
+          "id": "mayhem-14",
+          "title": "Pea Soup",
+          "rating": "Mayhem",
+          "number": 14,
+          "path": "levels/mayhem-14.json",
+          "bytes": 13335,
+          "sha256": "482c5adb0f0547df6adfa1aee5be6e5a9e1ab0fabf65e2767e053bb40c9f815c"
+        },
+        {
+          "id": "mayhem-15",
+          "title": "The Fast Food Kitchen...",
+          "rating": "Mayhem",
+          "number": 15,
+          "path": "levels/mayhem-15.json",
+          "bytes": 23066,
+          "sha256": "7241d6bd9ba208e83bc50c1a6b6ac0440278a1c2bcb8a1fb7d61f678f8c9cdd7"
+        },
+        {
+          "id": "mayhem-16",
+          "title": "Just a Minute...",
+          "rating": "Mayhem",
+          "number": 16,
+          "path": "levels/mayhem-16.json",
+          "bytes": 15530,
+          "sha256": "6873bd1e2fe1576fe615c99f111207fba15ed438a1a42bf74d33f89de8999534"
+        },
+        {
+          "id": "mayhem-17",
+          "title": "Stepping Stones",
+          "rating": "Mayhem",
+          "number": 17,
+          "path": "levels/mayhem-17.json",
+          "bytes": 13475,
+          "sha256": "43d3d4c0002da78bf83b17ed3458d80e089c2444709a24a14b0f9274d76c5bdc"
+        },
+        {
+          "id": "mayhem-18",
+          "title": "Triple Trouble",
+          "rating": "Mayhem",
+          "number": 18,
+          "path": "levels/mayhem-18.json",
+          "bytes": 22478,
+          "sha256": "7365674b8e90f60b42af1ea2338640c1a2ca0a6117ce07cbe8d560b055b2411c"
+        },
+        {
+          "id": "mayhem-19",
+          "title": "Time to get up!",
+          "rating": "Mayhem",
+          "number": 19,
+          "path": "levels/mayhem-19.json",
+          "bytes": 13398,
+          "sha256": "c4f35168f152a4771a7c5a69fc94e69538b377dfc085335d53a19a5f98c73f81"
+        },
+        {
+          "id": "mayhem-20",
+          "title": "No added colours or Lemmings",
+          "rating": "Mayhem",
+          "number": 20,
+          "path": "levels/mayhem-20.json",
+          "bytes": 13887,
+          "sha256": "7c4bee4726bbf428409a8494f324c78828af1b6121661a0381af4be16825e30c"
+        },
+        {
+          "id": "mayhem-21",
+          "title": "With a twist of lemming please",
+          "rating": "Mayhem",
+          "number": 21,
+          "path": "levels/mayhem-21.json",
+          "bytes": 11857,
+          "sha256": "5f0bb005ca77ad859b428e5ce99e8af4afd73623c76ee2776b9cd3592f570efd"
+        },
+        {
+          "id": "mayhem-22",
+          "title": "A Beast II of a level",
+          "rating": "Mayhem",
+          "number": 22,
+          "path": "levels/mayhem-22.json",
+          "bytes": 11338,
+          "sha256": "1c72dc98283fd8284f6ac8f77676aedc1d9a7b025b74813bc3f75614fce592ac"
+        },
+        {
+          "id": "mayhem-23",
+          "title": "All or Nothing",
+          "rating": "Mayhem",
+          "number": 23,
+          "path": "levels/mayhem-23.json",
+          "bytes": 17046,
+          "sha256": "ff67925c0fe6d4ffc6c03f84aa18c133591df0ca09dd034ae4299341c5753889"
+        },
+        {
+          "id": "mayhem-24",
+          "title": "The Steel Mines of Kessel",
+          "rating": "Mayhem",
+          "number": 24,
+          "path": "levels/mayhem-24.json",
+          "bytes": 11751,
+          "sha256": "cff6db3f350ab236ffee54297a93f687d013b54d5d202f7e91c9ba4b77c2f817"
+        },
+        {
+          "id": "mayhem-25",
+          "title": "Just a Minute (Part two)",
+          "rating": "Mayhem",
+          "number": 25,
+          "path": "levels/mayhem-25.json",
+          "bytes": 15538,
+          "sha256": "1c3141dac29cb7f8b6b978f7f00bea59eb6c37362c6b35ad0f2d9f5f3ee71b96"
+        }
+      ]
+    }
+  ]
+}

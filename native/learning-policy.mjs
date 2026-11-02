@@ -1,5 +1,5 @@
 import {Game} from './engine.mjs';
-export const ID='greenmarch-native-fun01-1';
+export const ID='greenmarch-native-fun01-2';
 export const PATTERNS=[132,134,136,138,139,140,141,142].map(x=>({id:'dig-'+x,x}));
 export const blank=()=>({version:ID,attempts:0,arms:{},champion:null});
 export function choose(model,random=Math.random){const fresh=PATTERNS.find(p=>!model.arms[p.id]?.count);if(fresh)return fresh;if(random()<.25)return PATTERNS[Math.floor(random()*PATTERNS.length)];return [...PATTERNS].sort((a,b)=>model.arms[b.id].mean-model.arms[a.id].mean)[0]}

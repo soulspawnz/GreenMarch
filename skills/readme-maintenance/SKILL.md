@@ -18,10 +18,10 @@ The user prefers DeepFall's player-first presentation. For this project:
   testing and deployment details in `docs/DEVELOPMENT.md`.
 - Preserve existing license files and accurate original-game attribution. Do
   not imply that the browser shell's license covers original game assets.
-- Describe the current architecture accurately: native JavaScript gameplay starts
-  with Fun 1; an audio-only original SID player is separate. The 100-level C64
-  emulator remains a reference build. Do not call the emulator shell a native
-  recreation or imply all 100 levels have been ported or solved.
+- Describe the current architecture accurately: native JavaScript gameplay has
+  100 original layouts and all eight skills; an audio-only SID player is separate.
+  The C64 emulator remains a reference build. Distinguish inclusion and startup
+  checks from solved puzzles or frame-perfect physics. Training supports Fun 1.
 
 Keep public copy focused on play, supported features and honest limitations.
 Keep internal research tooling and asset-preparation methods in private notes.

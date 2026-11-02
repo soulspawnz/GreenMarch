@@ -1,11 +1,66 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101611"><title>GreenMarch · Native browser recreation</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="artwork/brand.css"><link rel="stylesheet" href="native/native.css"><link rel="icon" href="artwork/mark.svg" type="image/svg+xml"></head><body>
-<header><a class="wordmark" href="./"><img src="artwork/mark.svg" width="32" height="32" alt="">GREENMARCH<span>EVERY LITTLE LIFE COUNTS</span></a><span class="edition">C64 PIXELS / NATIVE BROWSER ENGINE</span><button id="fullscreen" class="quiet">Fullscreen <kbd>F</kbd></button></header>
-<main><div class="intro"><div><p class="eyebrow">THE FIRST RESCUE</p><h1>Let's go!</h1></div><p class="intro-note">Original graphics. Original SID.<br>Our own browser engine.</p></div>
-<div class="layout"><section class="play-area" aria-label="Native Lemmings recreation"><div class="screen-top"><span><i></i> FUN 01 / JUST DIG!</span><span id="status" role="status">Loading…</span></div><div id="native-stage"><canvas id="game" aria-label="Just dig! — original C64 terrain and lemmings" tabindex="0"></canvas><div id="curtain"><span class="curtain-kicker">FUN · LEVEL 01</span><h2 id="overlay-title">Just dig!</h2><p id="overlay-copy">10 lemmings. Save at least one.</p><button id="play" disabled>Loading the original assets…</button><span class="curtain-note">Native simulation · original C64 graphics &amp; SID music</span></div></div>
-<div class="native-hud"><span>OUT <strong id="out">00</strong></span><span>IN <strong id="saved">000%</strong></span><span>TIME <strong id="time">5:00</strong></span><span>TO SAVE <strong>10%</strong></span></div>
-<div class="transport"><button id="pause" disabled>Pause <kbd>P</kbd></button><button id="restart" disabled>Restart level</button><button id="speed" disabled aria-pressed="false">Speed ×1</button><div class="sound-control"><button id="sound" aria-pressed="true">Sound on</button><label><input id="volume" type="range" min="0" max="60" value="35" aria-label="Volume"></label><span class="sid"><i id="audio-light"></i> SID 6581</span></div></div>
-<div class="skill-row" aria-label="Skills"><button data-skill="0" disabled><kbd>1</kbd>Climber <span>0</span></button><button data-skill="1" disabled><kbd>2</kbd>Floater <span>0</span></button><button data-skill="2" disabled><kbd>3</kbd>Bomber <span>0</span></button><button data-skill="3" disabled><kbd>4</kbd>Blocker <span>0</span></button><button data-skill="4" disabled><kbd>5</kbd>Builder <span>0</span></button><button data-skill="5" disabled><kbd>6</kbd>Basher <span>0</span></button><button data-skill="6" disabled><kbd>7</kbd>Miner <span>0</span></button><button id="digger" data-skill="7" class="recommended selected"><kbd>8</kbd>Digger <span id="diggers">10</span></button></div>
-<div class="native-touch"><button id="scroll-left" aria-label="Scroll left">← View</button><button id="assign">Assign Digger</button><button id="scroll-right" aria-label="Scroll right">View →</button></div></section>
-<aside><section class="card mission"><p class="eyebrow">FUN / LEVEL 01</p><h2>Just dig!</h2><p>They walk. You make the plan.</p><ol><li>Select <strong>Digger</strong> with <kbd>8</kbd>.</li><li>Click a walking lemming to dig down through the soil.</li><li>Guide at least one to the exit. Pan at the sides to explore.</li></ol><p class="hint">Your ten diggers are the entire original inventory for this level.</p><p id="notice" role="status" aria-live="polite"></p></section><section class="card"><p class="eyebrow">A NEW ENGINE</p><h2>Small steps.</h2><p>Original C64 level graphics, lemming animations, entrance, exit and SID music.</p><p>Movement and terrain destruction run directly in JavaScript. This first native build supports Fun 1 and its Digger skill.</p><a href="docs/NATIVE_ENGINE.md">Features &amp; limits ↗</a></section></aside></div>
-<section id="native-adaptive" class="card"><p class="eyebrow">ADAPTIVE PLAYER / NATIVE SIMULATION</p><h2>Find a way home.</h2><p>Try digger placements in a separate simulation. Training learns which authored placement patterns work and retains its best verified input recording.</p><div class="adaptive-actions"><label>Attempts <select id="training-count"><option>5</option><option>10</option><option>25</option></select></label><button id="train" disabled>Train</button><button id="stop-training" disabled>Stop</button><button id="replay-best" disabled>Replay best</button></div><p id="training-status" role="status" aria-live="polite">Opening local experience…</p><p id="training-summary"></p><details><summary>Saved attempts</summary><div class="native-table"><table><thead><tr><th>Attempt</th><th>Placement</th><th>Outcome</th><th>Rescued</th><th>Ticks</th><th>Playback</th></tr></thead><tbody id="native-history"></tbody></table></div><button id="export-training">Export experience</button><p>Native learning is separate from the earlier emulator experiment. This browser and site keep their own experience. Baselines and replayed winners are not new training discoveries.</p></details></section>
-<footer><span>ORIGINAL GAME © DMA DESIGN / PSYGNOSIS · C64: E&amp;E SOFTWARE · MUSIC: JEROEN TEL</span><a href="emulator-reference.html">Original C64 reference version ↗</a><a href="README.md">About &amp; credits</a></footer></main><script type="module" src="native/main.mjs"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+ <meta name="theme-color" content="#101611"><meta name="description" content="GreenMarch: the original C64 Lemmings levels, graphics and SID music in our native browser engine.">
+ <title>GreenMarch · Every little life counts</title>
+ <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="artwork/brand.css"><link rel="stylesheet" href="native/native.css">
+ <link rel="icon" href="artwork/mark.svg" type="image/svg+xml">
+</head>
+<body>
+<header>
+ <a class="wordmark" href="./"><img src="artwork/mark.svg" width="32" height="32" alt="">GREENMARCH<span>EVERY LITTLE LIFE COUNTS</span></a>
+ <span class="edition">C64 PIXELS / NATIVE BROWSER ENGINE</span>
+ <button id="fullscreen" class="quiet">Fullscreen <kbd>F</kbd></button>
+</header>
+<main>
+ <div class="intro"><div><p class="eyebrow">100 PUZZLES. EVERY LITTLE LIFE.</p><h1>Let's go!</h1></div><p class="intro-note">Original graphics. Original SID.<br>Our own browser engine.</p></div>
+ <div class="layout">
+  <section class="play-area" aria-label="Native Lemmings recreation">
+   <div class="screen-top"><span><i></i> <span id="screen-label">FUN 01 / JUST DIG!</span></span><span id="status" role="status">Loading…</span></div>
+   <div id="native-stage">
+    <canvas id="game" aria-label="Original C64 terrain and lemmings" tabindex="0"></canvas>
+    <div id="curtain"><span id="overlay-kicker" class="curtain-kicker">FUN · LEVEL 01</span><h2 id="overlay-title">Just dig!</h2><p id="overlay-copy">10 lemmings. Save at least one.</p><button id="play" disabled>Loading the original assets…</button><button id="continue-level" hidden>Next level</button><span class="curtain-note">Native simulation · original C64 graphics &amp; SID music</span></div>
+   </div>
+   <div class="native-hud"><span>OUT <strong id="out">00</strong></span><span>IN <strong id="saved">000%</strong></span><span>TIME <strong id="time">5:00</strong></span><span>TO SAVE <strong id="save-target">10%</strong></span></div>
+   <div class="transport">
+    <button id="pause" disabled>Pause <kbd>P</kbd></button><button id="restart" disabled>Restart level</button><button id="speed" disabled aria-pressed="false">Speed ×1</button>
+    <div class="sound-control"><button id="sound" aria-pressed="true">Sound on</button><label><input id="volume" type="range" min="0" max="60" value="35" aria-label="Volume"></label><span class="sid"><i id="audio-light"></i> SID 6581</span></div>
+   </div>
+   <div class="skill-row" aria-label="Skills">
+    <button data-skill="0" disabled><kbd>1</kbd>Climber <span id="skill-0">0</span></button>
+    <button data-skill="1" disabled><kbd>2</kbd>Floater <span id="skill-1">0</span></button>
+    <button data-skill="2" disabled><kbd>3</kbd>Bomber <span id="skill-2">0</span></button>
+    <button data-skill="3" disabled><kbd>4</kbd>Blocker <span id="skill-3">0</span></button>
+    <button data-skill="4" disabled><kbd>5</kbd>Builder <span id="skill-4">0</span></button>
+    <button data-skill="5" disabled><kbd>6</kbd>Basher <span id="skill-5">0</span></button>
+    <button data-skill="6" disabled><kbd>7</kbd>Miner <span id="skill-6">0</span></button>
+    <button id="digger" data-skill="7" class="selected" disabled><kbd>8</kbd>Digger <span id="diggers">10</span></button>
+   </div>
+   <div class="native-touch"><button id="scroll-left" aria-label="Scroll left">← View</button><button id="assign">Assign Digger</button><button id="scroll-right" aria-label="Scroll right">View →</button></div>
+   <div class="native-extra"><div><span>Release <strong id="release-rate">50</strong></span><button id="release-down" aria-label="Decrease release rate">−</button><button id="release-up" aria-label="Increase release rate">+</button></div><button id="nuke">Nuke · double tap</button></div>
+  </section>
+  <aside>
+   <section class="card native-campaign"><p class="eyebrow">THE ORIGINAL CAMPAIGN</p><h2>100 ways home.</h2>
+    <label for="native-rating">Rating</label><select id="native-rating" disabled></select>
+    <label for="native-level">Level</label><select id="native-level" disabled></select>
+    <div class="campaign-actions"><button id="load-level" disabled>Load level</button><button id="next-level" disabled>Next level</button></div>
+    <p id="campaign-progress">Opening the native campaign…</p>
+   </section>
+   <section class="card mission"><p id="mission-kicker" class="eyebrow">FUN / LEVEL 01</p><h2 id="level-title">Just dig!</h2><p id="mission-copy">They walk. You make the plan.</p>
+    <ol><li>Choose an available skill with <kbd>1</kbd>–<kbd>8</kbd>.</li><li>Click or tap a lemming to assign it.</li><li>Guide enough lemmings to the exit. Pan at the sides or use View.</li></ol>
+    <p id="level-facts" class="hint">10 lemmings · save 10% · 5 minutes.</p><p id="notice" role="status" aria-live="polite"></p>
+   </section>
+   <section class="card"><p class="eyebrow">EVERY LITTLE LIFE COUNTS</p><h2>A way through.</h2><p>Climb, float, build, bash, mine and dig. Use Blockers to turn the crowd and Bombers to open a route.</p><p>Restart freely. A new route can change everything.</p><a href="docs/NATIVE_ENGINE.md">Features &amp; limits ↗</a></section>
+  </aside>
+ </div>
+ <section id="native-adaptive" class="card"><p class="eyebrow">ADAPTIVE PLAYER / FUN 1</p><h2>Find a way home.</h2>
+  <p>On Just dig!, try Digger placements in a separate simulation. Training retains its best verified input recording and leaves your manual game intact.</p>
+  <div class="adaptive-actions"><label>Attempts <select id="training-count"><option>5</option><option>10</option><option>25</option></select></label><button id="train" disabled>Train</button><button id="stop-training" disabled>Stop</button><button id="replay-best" disabled>Replay best</button></div>
+  <p id="training-status" role="status" aria-live="polite">Opening local experience…</p><p id="training-summary"></p><p id="archive-notice" hidden></p>
+  <details><summary>Saved attempts</summary><div class="native-table"><table><thead><tr><th>Attempt</th><th>Placement</th><th>Outcome</th><th>Rescued</th><th>Ticks</th><th>Playback</th></tr></thead><tbody id="native-history"></tbody></table></div><button id="export-training">Export experience</button><p>Experience belongs to this browser and site. Replayed winners are not new training discoveries. Adaptive training currently supports Fun 1.</p></details>
+ </section>
+ <footer><span>ORIGINAL GAME © DMA DESIGN / PSYGNOSIS · C64: E&amp;E SOFTWARE · MUSIC: JEROEN TEL</span><a href="emulator-reference.html">Original C64 reference version ↗</a><a href="README.md">About &amp; credits</a></footer>
+</main>
+<script type="module" src="native/main.mjs"></script>
+</body></html>

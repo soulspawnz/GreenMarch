@@ -27,7 +27,7 @@ async function exercise(name,width,height,deviceScaleFactor){
   const frozen=await page.evaluate(()=>greenmarch.game.tick);
   await page.waitForTimeout(350);assert.equal(await page.evaluate(()=>greenmarch.game.tick),frozen);
   await page.locator('#game').scrollIntoViewIfNeeded();
-  const before=await page.evaluate(()=>{const a=greenmarch.game.actors.find(a=>a.id===0),b=document.querySelector('#game').getBoundingClientRect();return {actor:a,x:b.x+(a.x-greenmarch.renderer.camera)/160*b.width,y:b.y+(a.y-5)/168*b.height}});
+  const before=await page.evaluate(()=>{const a=greenmarch.game.actors.find(a=>a.id===0),b=document.querySelector('#game').getBoundingClientRect();return {actor:a,x:b.x+(a.x-greenmarch.renderer.camera)/160*b.width,y:b.y+(a.y-5)/greenmarch.game.level.height*b.height}});
   assert(before.actor.x<=142,'Touch assignment must remain within a winning placement');
   await page.locator('#pause').tap();
   await page.touchscreen.tap(before.x,before.y);
